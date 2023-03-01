@@ -28,8 +28,10 @@
 ## 設計書
 ・ER図 https://drive.google.com/file/d/1SORcjLd7dtkEeZZyGKQf1fBpDr8yg0cr/view?usp=sharing<br>
 ・テーブル定義書 https://docs.google.com/spreadsheets/d/14QKoZ8n4QC978ae7l-GcO7UFixsBgG-xp4EWrWfhBec/edit?usp=sharing<br>
-・詳細設計<br>
-・テーマ提出後作成。作成後こちらにURL記入
+・詳細設計 https://docs.google.com/spreadsheets/d/1JjAj--iuAfQW_G5N-0LebEdy4PFVL7yNDUqTaIveI8A/edit?usp=sharing<br>
+
+##注意
+・ゲーム画像の使用を行わないもしくはパッケージ画像のみ取得する形式（楽天API）をとる
 
 ## 開発環境
 ・ OS：Linux(CentOS)<br>

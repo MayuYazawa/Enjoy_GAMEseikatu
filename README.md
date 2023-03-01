@@ -30,7 +30,7 @@
 ・テーブル定義書 https://docs.google.com/spreadsheets/d/14QKoZ8n4QC978ae7l-GcO7UFixsBgG-xp4EWrWfhBec/edit?usp=sharing<br>
 ・詳細設計 https://docs.google.com/spreadsheets/d/1JjAj--iuAfQW_G5N-0LebEdy4PFVL7yNDUqTaIveI8A/edit?usp=sharing<br>
 
-##注意
+### 注意
 ・ゲーム画像の使用を行わないもしくはパッケージ画像のみ取得する形式（楽天API）をとる
 
 ## 開発環境

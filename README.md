@@ -26,8 +26,8 @@
 ・自分がやってみたゲームの情報を共有したい時<br>
 
 ## 設計書
-・ER図　https://drive.google.com/file/d/1SORcjLd7dtkEeZZyGKQf1fBpDr8yg0cr/view?usp=sharing<br>
-・テーブル定義書<br>
+・ER図 https://drive.google.com/file/d/1SORcjLd7dtkEeZZyGKQf1fBpDr8yg0cr/view?usp=sharing<br>
+・テーブル定義書 https://docs.google.com/spreadsheets/d/14QKoZ8n4QC978ae7l-GcO7UFixsBgG-xp4EWrWfhBec/edit?usp=sharing<br>
 ・詳細設計<br>
 ・テーマ提出後作成。作成後こちらにURL記入
 

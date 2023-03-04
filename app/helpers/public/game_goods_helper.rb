@@ -1,0 +1,2 @@
+module Public::GameGoodsHelper
+end

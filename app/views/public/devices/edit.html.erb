@@ -1,2 +1,44 @@
-<h1>Public::Devices#edit</h1>
-<p>Find me in app/views/public/devices/edit.html.erb</p>
+<div class="container">
+
+  <div class="row"  style="margin-top:25px;">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h4>デバイス・周辺機器投稿編集</h4>
+    </div>
+  </div>
+  <div class="row ml-5" style="margin-bottom:25px;">
+    <div class="col-sm-10 px-sm-0 mx-auto">
+      <%= form_with model: @device, url: device_path(@device.id) do |f| %>
+        <table class="table table-borderless text-secondary">
+          <tr>
+            <th><%= f.label :device_image, "デバイス・周辺機器商品画像" %></th>
+            <td><%= f.file_field :device_image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :device_name, "デバイス・周辺機器の名前" %></th>
+            <td><%= f.text_field :device_name, :placeholder => "デバイス・周辺機器の名前", size: 47 %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :device_genre_id, "デバイス・周辺機器ジャンル" %></th>
+            <td><%= f.collection_select :device_genre_id, DeviceGenre.all, :id, :device_genre_name, {include_blank: "--選択してください--"} %></td>          </tr>
+          <tr>
+            <th><%= f.label :device_caption, "デバイス・周辺機器説明" %></th>
+            <td><%= f.text_area :device_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :brand, "ブランド名" %></th>
+            <td><%= f.text_area :brand, :placeholder => "ここにブランド名を記述します", size: "50x3" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :amazon, "Amazonリンク" %></th>
+            <td><%= f.text_area :amazon, :placeholder => "ここにAmazonのリンクを記述します", size: "50x3" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :price, "税抜価格" %></th>
+            <td><%= f.number_field :price, :placeholder => "1000" %>円</td>
+          </tr>
+        </table>
+        <%= f.submit "変更を保存", class: 'btn btn-success btn-lg' %>
+      <% end %>
+    </div>
+  </div>
+</div>

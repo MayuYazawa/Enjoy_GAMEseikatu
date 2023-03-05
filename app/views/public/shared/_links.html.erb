@@ -1,0 +1,13 @@
+<%- if controller_name != 'sessions' %>
+  <h5><b> すでに登録済の方 </b></h5>
+  <div class="public-registrations-link">
+    <%= link_to "こちら", user_session_path %>からログインして下さい。
+  </div>
+<% end %>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <h5><b> 会員登録がお済でない方 </b></h5>
+  <div class="public-session-link">
+    <%= link_to "こちら", new_registration_path %>から新規登録を行って下さい。
+  </div>
+<% end %>

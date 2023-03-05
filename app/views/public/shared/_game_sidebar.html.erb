@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <table class= "col-12 game_genre-table table-bordered">
+      <thead class= "table-active">
+        <tr>
+          <th>ゲームジャンル検索</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% game_genres.each do |game_genre| %>
+          <tr>
+            <td>
+              <%= link_to games_path(game_genre_id: game_genre.id) do %>
+                <%= game_genre.game_genre_name %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

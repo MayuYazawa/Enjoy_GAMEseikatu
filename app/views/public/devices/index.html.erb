@@ -1,2 +1,38 @@
-<h1>Public::Devices#index</h1>
-<p>Find me in app/views/public/devices/index.html.erb</p>
+<div class= "container">
+  <div class= "row">
+    <div class= "col-md-3 mt-5">
+      <%= render "shared/device_sidebar", device_genres: @device_genres %>
+      <%= render "shared/deviceform", device: @device %>
+    </div>
+    <div class= "col-md-9 my-5">
+      <h2 class= "product-headline head-line text-left">
+        <% if @device_genre.present? %>
+          <%= @device_genre.device_genre_name %>
+        <% else %>
+          デバイス・周辺機器一覧
+        <% end %>
+        <span>(全<%= @devices.total_count %>件中 <%= @devices.count %>件）</span>
+      </h2>
+
+      <div class= "row text-center">
+        <% @devices.each do |game| %>
+          <div class= "col-md-3 mt-5">
+            <div class= "item_image">
+              <%= link_to device_path(device) do %>
+                <%= image_tag device.get_image(150, 150) %>
+              <% end %>
+            </div>
+            <p class= "device_name">
+              <%= device.deice_name %>
+            </p>
+            <p class= "price">
+              <%= device.price %>(税別）
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <%= paginate @devices %>
+    </div>
+
+  </div>
+</div>

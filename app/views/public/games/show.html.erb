@@ -1,2 +1,55 @@
-<h1>Public::Games#show</h1>
-<p>Find me in app/views/public/games/show.html.erb</p>
+<div class= "container">
+  <div class= "row">
+    <!--<div class= "col-2 md-3 mt-5 offset-2">-->
+    <div class= "col-md-2 mt-5">
+      <%= render 'shared/game_sidebar', game_genres: @game_genres %>
+    </div>
+    <div class= "col-9 md-9 my-5 offset-1">
+      <div class= "game_image" style="margin-bottom:40px;">
+        <%#= image_tag @item.get_image(300, 300) %>
+      </div>
+      <div class= "game" style="margin-bottom:20px;">
+        <h3><b><%= @game.game_name %></b></h3>
+        <br>
+        <h5><%= @game.game_genre %></h5>
+        <br>
+        <h5><%= @game.game_caption %></h5>
+        <br>
+        <h5><%= @game.system %></h5>
+        <br>
+        <h5><%= @game.release %></h5>
+        <br>
+        <h5><%= @game.development %></h5>
+      </div>
+      <h3 class= "mt-5">
+        ¥ <%= (@game.price*1.1).floor.to_s(:delimited) %>
+        <span class= "tax">(税込)</span>
+      </h3>
+      <div>
+        <% if @game.user == current_admin %>
+          <%= link_to 'Edit', edit_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %>
+          <%= link_to 'Destroy', @game, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_game_#{@game.id}" %>
+        <% end %>
+        <% if @game.user == current_user %>
+          <%= link_to 'Edit', edit_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!--<div class="row" style="margin-bottom:25px;">
+    <div class= "col-md-2 cart">
+      <%#= form_with(model: @cart_item, url: cart_items_path(@cart_item)) do |f| %>
+        <div class= "text mx-2">
+          <%#if @item.sale_status == true %>
+            <%#= f.hidden_field :item_id, value: @item.id %>
+            <%#= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+            <%#= f.submit "カートに入れる", class: "btn btn-success" %>
+          <%# else %>
+            <h3>売り切れ中</h3>
+          <%# end %>
+        </div>
+      <%# end %>
+    </div>
+
+  </div>-->
+</div>

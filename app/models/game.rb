@@ -10,4 +10,12 @@ class Game < ApplicationRecord
     validates :game_caption
     validates :price
   end
+  
+  def get_image(width, height)
+    unless game_image.attached?
+      file_path = Rails.root.join("app/assets/images/no_image.jpg")
+      image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
+    end
+    game_image.variant(resize_to_fill: [width, height], gravity: :center).processed
+  end
 end

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <table class= "col-12 game_genre-table table-bordered">
+      <thead class= "table-active">
+        <tr>
+          <th>デバイス・周辺機器ジャンル検索</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% device_genres.each do |device_genre| %>
+          <tr>
+            <td>
+              <%= link_to devices_path(device_genre_id: device_genre.id) do %>
+                <%= device_genre.device_genre_name %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

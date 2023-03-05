@@ -1,15 +1,20 @@
 <div class="container">
 
   <div class="row" style="margin-top:25px;">
-   <div class="col-sm-8 px-sm-0 offset-sm-1">
+   <div class="col-sm-8 px-sm-0 offset-sm-">
       <h1>ゲーム新規登録</h1>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-sm-10 px-sm-0 mx-auto mb-5">
-    <%= form_with model: [:game, @game] do |f| %>
-      <table class="table table-borderless">
+    <table class="col-12 new_game-table tablebordered">
+    <%= form_with model: [:game, game] do |f| %>
+      <thead class="table active">
+        <tr>
+          <th>ゲーム投稿</th>
+        </tr>
+      </thead>
+      <tbody>
         <!--<tr>
           <th><%#= f.label :game_image, "ゲーム商品画像" %></th>
           <td><%#= f.file_field :game_image, accept: "image/*" %></td>
@@ -41,9 +46,9 @@
           <th><%= f.label :price, "税抜価格" %></th>
           <td><%= f.number_field :price, :placeholder => "1000" %>円</td>
         </tr>
-      </table>
+      </tbody>
       <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
     <% end %>
-    </div>
+    </table>
   </div>
 </div>

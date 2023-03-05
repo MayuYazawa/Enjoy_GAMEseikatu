@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, controllers: {
+  namespace :admin do
+    get 'registration/new'
+    get 'registration/edit'
+  end
+  devise_for :user, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
-  devise_for :admins, controllers: {
+  devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
 
@@ -14,6 +18,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
 
     resources :games, only: [:index, :show, :new, :update, :create, :destroy, :edit]
     resources :devices, only: [:index, :show, :new, :update, :create, :destroy, :edit]

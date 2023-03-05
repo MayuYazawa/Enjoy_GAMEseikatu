@@ -1,2 +1,39 @@
-<h1>Admin::Sessions#new</h1>
-<p>Find me in app/views/admin/sessions/new.html.erb</p>
+<%= form_with model: @admin, url: admin_session_path do |f| %>
+<div class="conteiner">
+  <div class="row mb-4" style="margin-top:25px;">
+    <div class="col-2"></div>
+    <div>
+      <h5 style="background-color:#f4f4f4"><b>　管理者ログイン　</b></h5>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-2"></div>
+    <div>
+
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8 offset-md-1">
+        <div class="row field m-2" >
+          <label class="col-form-label col-sm-3" for="layoutExam3-name">メールアドレス</label>
+          <div><%= f.email_field :email, size:45, autofocus: true, autocomplete: "email", placeholder:"sample@example.com"  %></div>
+        </div>
+        <div class="row field m-2" >
+          <label class="col-form-label col-sm-3" for="layoutExam3-name">パスワード</label>
+          <div><%= f.password_field :password, size:45, autocomplete: "current-password" %></div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3"></div>
+      <div class="col-6"><%= f.submit "ログイン", class: "px-5 btn btn-primary " %></div>
+    </div>
+
+    <div class="row mt-3" style="margin-bottom:25px;">
+      <div class="col-2"></div>
+      <div class="col">
+
+    </div>
+<% end %>
+</div>

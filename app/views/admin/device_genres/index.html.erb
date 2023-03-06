@@ -1,2 +1,45 @@
-<h1>Admin::DeviceGenres#index</h1>
-<p>Find me in app/views/admin/device_genres/index.html.erb</p>
+<div class="container">
+
+  <div class="row" style="margin-top:25px;">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h4><b>デバイス・周辺機器ジャンル一覧・追加</b></h4>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top:25px;">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <%= form_with model: [:admin, @device_genre] do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <p>
+            <b><%= f.label :"デバイス・周辺機器ジャンル名" %> </b>
+            <%= f.text_field :device_genre_name, :placeholder => "デバイス・周辺機器ジャンル名" %> 
+            <%= f.submit "新規登録", class: "btn btn-success" %>
+          </p>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row px-5">
+　  <div class="col-md-6">
+      <table class="table text-secondary">
+        <thead>
+          <tr>
+            <th>デバイス・周辺機器ジャンル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @device_genres.each do |device_genre| %>
+          <tr>
+            <td><%= device_genre.device_genre_name %></td>
+            <td><%= link_to "編集する", edit_admin_device_genre_path(device_genre.id), class:'btn btn-success' %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

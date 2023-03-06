@@ -30,10 +30,11 @@ class Admin::GameGenresController < ApplicationController
   end
 
   def destroy
+    @game_genre = GameGenre.find(params[:id])
     @game_genre.destroy
     redirect_to admin_game_genres_path
   end
-  
+
   private
 
   def game_genre_params

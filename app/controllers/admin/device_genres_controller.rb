@@ -30,6 +30,7 @@ class Admin::DeviceGenresController < ApplicationController
   end
 
   def destroy
+    @device_genre = DeviceGenre.find(params[:id])
     @device_genre.destroy
     redirect_to admin_device_genres_path
   end

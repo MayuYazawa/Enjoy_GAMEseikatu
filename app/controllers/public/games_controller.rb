@@ -33,12 +33,14 @@ class Public::GamesController < ApplicationController
   end
 
   def destroy
+    @game = Game.find(params[:id])
     @game.destroy
     redirect_to games_path
   end
 
   def create
     @game = Game.new(game_params)
+    @game.user_id = current_user.id
     if @game.save
       redirect_to games_path, notice: "投稿しました。"
     else

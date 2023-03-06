@@ -2,7 +2,7 @@
   <div class= "row">
     <!--<div class= "col-2 md-3 mt-5 offset-2">-->
     <div class= "col-md-2 mt-5">
-      <%= render 'shared/device_sidebar', device_genres: @device_genres %>
+      <%= render 'public/shared/device_sidebar', device_genres: @device_genres %>
     </div>
     <div class= "col-9 md-9 my-5 offset-1">
       <div class= "device_image" style="margin-bottom:40px;">
@@ -24,9 +24,9 @@
         <span class= "tax">(税込)</span>
       </h3>
       <div>
-        <% if @device.user == current_admin %>
+        <% if admin_signed_in? %>
           <%= link_to "編集する", edit_device_path(@device), class: "btn btn-sm btn-success edit_device_#{@device.id}" %>
-          <%= link_to "削除する", @device, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_#{@device.id}" %>
+          <%= link_to "削除する", device_path(@device.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_#{@device.id}" %>
         <% end %>
         <% if @device.user == current_user %>
           <%= link_to "編集する", edit_device_path(@device), class: "btn btn-sm btn-success edit_device_#{@device.id}" %>

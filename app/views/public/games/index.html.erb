@@ -1,8 +1,8 @@
 <div class= "container">
   <div class= "row">
     <div class= "col-md-3 mt-5">
-      <%= render "shared/game_sidebar", game_genres: @game_genres %>
-      <%= render "shared/gameform", game: @game %>
+      <%= render "public/shared/game_sidebar", game_genres: @game_genres %>
+      <%#= render "public/shared/gameform", game: @game %>
     </div>
     <div class= "col-md-9 my-5">
       <h2 class= "product-headline head-line text-left">
@@ -23,7 +23,9 @@
               <% end %>
             </div>
             <p class= "game_name">
-              <%= game.game_name %>
+              <%= link_to game_path(game) do %>
+                <%= game.game_name %>
+              <% end %>
             </p>
             <p class= "price">
               <%= game.price %>(税別）

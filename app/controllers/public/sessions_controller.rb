@@ -3,7 +3,9 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :user_is_deleted, only: [:create]
-  
+  def after_sign_in_path_for(resource)
+    games_path
+  end
   # GET /resource/sign_in
   # def new
   #   super
@@ -25,13 +27,19 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
+
   def guest_sign_in
     user = User.guest
     sign_in user
     redirect_to user_path(user), notice: "guestuserでログインしました。"
   end
-  
+
+
+  def after_sign_out_path_for(resource)
+    new_user_session_path
+  end
+
+
   def user_is_deleted
     ## 【処理内容1】 入力されたemailからアカウントを1件取得
     @user = User.find_by(email: params[:user][:email])

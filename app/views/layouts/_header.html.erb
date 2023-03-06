@@ -5,7 +5,9 @@
 
       <div class="navbar-brand">
         <% if admin_signed_in? %>
+          <%= link_to admin_game_genres_path, class:'navbar-brand' do %>
           <%#= image_tag 'logo.png', :size => '100x100' %>
+          <% end %>
         <% else %>
           <%= link_to root_path, class:'navbar-brand' do %>
             <%#= image_tag 'logo.png', :size => '100x100' %>
@@ -44,12 +46,12 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "/", class: 'nav-link text-dark' do %>
+            <%= link_to admin_game_genres_path, class: 'nav-link text-dark' do %>
               <i class="fas fa-university"></i> ゲームジャンル一覧
             <% end %>
           </li>
           <li>
-            <%= link_to "/", class: 'nav-link text-dark' do %>
+            <%= link_to admin_device_genres_path, class: 'nav-link text-dark' do %>
               <i class="fas fa-university"></i> デバイス・周辺機器ジャンル一覧
             <% end %>
           </li>
@@ -71,8 +73,18 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "/", class: 'nav-link text-dark' do %>
+            <%= link_to devices_path, class: 'nav-link text-dark' do %>
               <i class="fas fa-utensils"></i> デバイス・周辺機器一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_game_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-utensils"></i> ゲーム新規投稿
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_device_path, class: 'nav-link text-dark' do %>
+              <i class="fas fa-utensils"></i> デバイス・周辺機器新規投稿
             <% end %>
           </li>
           <li>

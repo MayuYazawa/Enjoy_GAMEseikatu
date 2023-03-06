@@ -33,12 +33,14 @@ class Public::DevicesController < ApplicationController
   end
 
   def destroy
+    @device = Device.find(params[:id])
     @device.destroy
     redirect_to devices_path
   end
 
   def create
     @device = Device.new(device_params)
+    @device.user_id = current_user.id
     if @device.save
       redirect_to devices_path, notice: "投稿しました。"
     else

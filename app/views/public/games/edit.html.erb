@@ -35,7 +35,7 @@
           </tr>
           <tr>
             <th><%= f.label :release, "リリース日" %></th>
-            <td><%= f.date_select :release, Date.today %></td>
+            <td><%= f.date_select :release, selected: Date.today %></td>
           </tr>
           <tr>
             <th><%= f.label :price, "税抜価格" %></th>

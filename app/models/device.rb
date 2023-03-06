@@ -1,16 +1,17 @@
 class Device < ApplicationRecord
-  
+
   has_one_attached :device_image
-  
+
   has_many :device_comments
   belongs_to :device_genre
-  
+  belongs_to :user
+
   with_options presence: true do
     validates :device_name
     validates :device_caption
     validates :price
   end
-  
+
   def get_image(width, height)
     unless device_image.attached?
       file_path = Rails.root.join("app/assets/images/no_image.jpg")

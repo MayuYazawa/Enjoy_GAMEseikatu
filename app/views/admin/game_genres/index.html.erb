@@ -13,7 +13,7 @@
         <tr>
           <p>
             <b><%= f.label :"ゲームジャンル名" %> </b>
-            <%= f.text_field :game_genre_name, :placeholder => "ゲームジャンル名" %> 
+            <%= f.text_field :game_genre_name, :placeholder => "ゲームジャンル名" %>
             <%= f.submit "新規登録", class: "btn btn-success" %>
           </p>
         </tr>
@@ -35,7 +35,8 @@
         <% @game_genres.each do |game_genre| %>
           <tr>
             <td><%= game_genre.game_genre_name %></td>
-            <td><%= link_to "編集する", edit_admin_game_genre_path(game_genre.id), class:'btn btn-success' %></td>
+            <td><%= link_to "編集する", edit_admin_game_genre_path(game_genre.id), class:'btn btn-sm btn-success' %></td>
+            <td><%= link_to "削除する", admin_game_genre_path(game_genre.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_game_genre_#{@game_genre.id}" %></td>
           </tr>
         <% end %>
         </tbody>

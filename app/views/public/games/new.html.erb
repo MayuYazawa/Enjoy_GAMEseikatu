@@ -2,13 +2,13 @@
 
   <div class="row" style="margin-top:25px;">
    <div class="col-sm-8 px-sm-0 offset-sm-1">
-      <h1>ゲーム新規登録</h1>
+      <h1>ゲーム新規投稿</h1>
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm-10 px-sm-0 mx-auto mb-5">
-    <%= form_with model: [:game, @game] do |f| %>
+    <%= form_with model: [:game, @game], url: games_path do |f| %>
       <table class="table table-borderless">
         <!--<tr>
           <th><%#= f.label :game_image, "ゲーム商品画像" %></th>
@@ -35,7 +35,7 @@
         </tr>
         <tr>
           <th><%= f.label :release, "リリース日" %></th>
-          <td><%= f.date_select :release, Date.today %></td>
+          <td><%= f.date_select :release, selected: Date.today %></td>
         </tr>
         <tr>
           <th><%= f.label :price, "税抜価格" %></th>

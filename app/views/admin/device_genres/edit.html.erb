@@ -1,2 +1,23 @@
-<h1>Admin::DeviceGenres#edit</h1>
-<p>Find me in app/views/admin/device_genres/edit.html.erb</p>
+<div class="container px-5 px-sm-0">
+
+  <div class="row" style="margin-top:25px; margin-bottom:200px;">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h4>デバイス・周辺機器ジャンル編集</h4>
+      <%= form_with model: [:admin, @device_genre], method: :patch do |f| %>
+        <table class ="table table-borderless">
+          <tr>
+            <td>
+              <b><%= f.label :デバイス・周辺機器ジャンル名 %></b>
+            </td>
+            <td>
+              <%= f.text_field :device_genre_name %>
+            </td>
+            <td>
+              <%= f.submit '変更を保存', class: 'btn btn-success' %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

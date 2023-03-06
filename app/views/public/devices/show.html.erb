@@ -25,11 +25,11 @@
       </h3>
       <div>
         <% if @device.user == current_admin %>
-          <%= link_to 'Edit', edit_device_path(@device), class: "btn btn-sm btn-success edit_device_#{@device.id}" %>
-          <%= link_to 'Destroy', @device, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_#{@device.id}" %>
+          <%= link_to "編集する", edit_device_path(@device), class: "btn btn-sm btn-success edit_device_#{@device.id}" %>
+          <%= link_to "削除する", @device, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_#{@device.id}" %>
         <% end %>
         <% if @device.user == current_user %>
-          <%= link_to 'Edit', edit_device_path(@device), class: "btn btn-sm btn-success edit_device_#{@device.id}" %>
+          <%= link_to "編集する", edit_device_path(@device), class: "btn btn-sm btn-success edit_device_#{@device.id}" %>
         <% end %>
       </div>
     </div>

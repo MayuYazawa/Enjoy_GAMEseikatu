@@ -13,7 +13,7 @@
         <tr>
           <p>
             <b><%= f.label :"デバイス・周辺機器ジャンル名" %> </b>
-            <%= f.text_field :device_genre_name, :placeholder => "デバイス・周辺機器ジャンル名" %> 
+            <%= f.text_field :device_genre_name, :placeholder => "デバイス・周辺機器ジャンル名" %>
             <%= f.submit "新規登録", class: "btn btn-success" %>
           </p>
         </tr>
@@ -35,7 +35,8 @@
         <% @device_genres.each do |device_genre| %>
           <tr>
             <td><%= device_genre.device_genre_name %></td>
-            <td><%= link_to "編集する", edit_admin_device_genre_path(device_genre.id), class:'btn btn-success' %></td>
+            <td><%= link_to "編集する", edit_admin_device_genre_path(@device_genre), class:"btn btn-success edit_admin_device_genre_#{@device_genre.id}" %></td>
+            <td><%= link_to "削除する", @device_genre, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_genre_#{@device_genre.id}" %></td>
           </tr>
         <% end %>
         </tbody>

@@ -1,0 +1,9 @@
+<div class="row mt-4">
+    <h5 class="col-2">投稿いいね一覧</h5>
+      <%= @user.device_goods.each do |device_good| %>
+        <%= link_to device_good.devices.device_name, device_goods_path(user),  class: "btn btn-sm btn-primary px-4" %>
+      <% end %>
+      <%= @user.game_goods.each do |game_good| %>
+        <%= link_to game_good.games.game_name, game_goods_path(user),  class: "btn btn-sm btn-primary px-4" %>
+      <% end %>
+</div>

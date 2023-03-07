@@ -1,5 +1,55 @@
-<% if user.name != "guestuser" %>
+<% if @user.username != "guestuser" %>
 <div class='row'>
-  <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+  <%= link_to '',edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}" %>
 </div>
 <% end %>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="text-center">
+      <h4 class="table-active text-center px-3">
+        ユーザー情報編集
+      </h4>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-sm-12 col-md-8 px-5 px-sm-0 mr-auto">
+      <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
+        <table class='table table-borderless'>
+          <tr>
+            <th>ユーザーネーム</th>
+            <th>
+              <%= f.text_field :username, placeholder: "ユーザーネーム", size: 25, class: "textlines-radius" %>
+            </th>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <th>
+              <%= f.label :"性別", class: "col-sm-3 control-label" %>
+              <%= f.radio_button :gender, "man", checked: true %><%= f.label :gender, "男性" %>
+              <%= f.radio_button :gender, "woman" %><%= f.label :gender, "女性" %>
+            </th>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <th>
+              <%= f.text_field :email, placeholder: "メールアドレス", size: 25, class: "textlines-radius" %>
+            </th>
+          </tr>
+        </table>
+        <div class="container my-5">
+          <div class="row">
+            <div class="form-inline col-3">
+            </div>
+            <div class="form-inline col-3">
+              <%= f.submit '編集内容を保存', class: "btn btn-success" %>
+            </div>
+            <div class="form-inline col-3">
+              <%= link_to "退会する", quit_users_path, class:"btn btn-danger" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

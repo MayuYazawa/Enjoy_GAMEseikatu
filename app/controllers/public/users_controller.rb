@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   # before_action :authenticate_customer!	コントローラーに設定して、ログイン済ユーザーのみにアクセスを許可する
-  before_action :authenticate_customer!
+  before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
 
   def show
@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to users_id_path, notice: "You have updated　customer_info successfully."
+      redirect_to user_path(@user), notice: "You have updated　customer_info successfully."
     else
       render "edit"
     end
@@ -34,6 +34,14 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def goods
+    @user = current_user
+  end
+
+  def comment_goods
+    @user = current_user
+  end
+
   private
 
   def user_params
@@ -42,7 +50,7 @@ class Public::UsersController < ApplicationController
 
   def ensure_guest_user
     @user = User.find(params[:id])
-    if @user.name == "guestuser"
+    if @user.username == "guestuser"
       redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end

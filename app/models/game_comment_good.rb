@@ -1,5 +1,5 @@
 class GameCommentGood < ApplicationRecord
   
   has_many :game_comments
-  has_many :users
+  belongs_to :user
 end

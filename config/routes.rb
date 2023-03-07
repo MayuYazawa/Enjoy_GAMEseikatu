@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
@@ -18,11 +21,18 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
-    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+    # post "users/guest_sign_in", to: "sessions#guest_sign_in"
 
     resources :games, only: [:index, :show, :new, :update, :create, :destroy, :edit]
     resources :devices, only: [:index, :show, :new, :update, :create, :destroy, :edit]
-    resources :users, only: [:show, :edit, :update, :quit, :withdraw]
+    resources :users, only: [:show, :edit, :update, :quit, :withdraw] do
+      collection do
+        get 'quit'
+        delete 'withdraw'
+        get 'goods'
+        get 'comment_goods'
+      end
+    end
     resources :game_goods, only: [:create, :destroy]
     resources :device_goods, only: [:create, :destroy]
     resources :game_comments, only: [:new, :create, :update, :edit, :index, :show, :destroy]

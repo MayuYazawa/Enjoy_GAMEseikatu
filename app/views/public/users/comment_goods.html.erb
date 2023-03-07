@@ -1,0 +1,9 @@
+<div class="row mt-3">
+    <h5 class="col-2">コメントいいね一覧</h5>
+      <%= @user.device_comment_goods.each do |device_comment_good| %>
+        <%= link_to  device_comment_goods_path(user),  class: "btn btn-sm btn-primary px-4" %>
+      <% end %>
+      <%= @user.game_comment_goods.each do |game_comment_good| %>
+        <%= link_to  game_comment_goods_path(user),  class: "btn btn-sm btn-primary px-4" %>
+      <% end %>
+</div>

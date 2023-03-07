@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2023_03_04_103233) do
 
   create_table "device_comments", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "devi_id", null: false
+    t.integer "device_id", null: false
     t.string "title", default: "", null: false
     t.text "body", default: "", null: false
     t.float "rate", default: 0.0, null: false

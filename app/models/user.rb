@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :game_comments
   has_many :game_goods
   has_many :game_comment_goods
+  has_many :device_goods
+  has_many :device_comment_goods
   has_many :games
   has_many :devises
 
@@ -17,9 +19,10 @@ class User < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(name: "guestuser" ,email: "guest@example.com") do |user|
+    find_or_create_by!(username: "guestuser" ,email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "guestuser"
+      user.gender = "man"
+      user.username = "guestuser"
     end
   end
 

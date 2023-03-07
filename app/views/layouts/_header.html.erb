@@ -41,7 +41,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "/", class: 'nav-link text-dark' do %>
+            <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
               <i class="fab fa-jedi-order"></i> ユーザー一覧
             <% end %>
           </li>
@@ -64,7 +64,7 @@
         <% elsif user_signed_in? %>
 
           <li>
-            <%= link_to "/", class: 'nav-link text-dark' do %>
+            <%= link_to user_path(current_user.id), class: 'nav-link text-dark' do %>
               <i class="fab fa-pagelines"></i> マイページ
             <% end %>
           <li>

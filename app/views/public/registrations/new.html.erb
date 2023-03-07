@@ -23,8 +23,8 @@
           <tr>
             <th><%= f.label :"性別" %></th>
 
-            <td><%= f.radio_button :gender, false, checked: true %><%= f.label :gender, "男性" %>
-                <%= f.radio_button :gender, true %><%= f.label :gender, "女性" %></td>
+            <td><%= f.radio_button :gender, "man", checked: true %><%= f.label :gender, "男性" %>
+                <%= f.radio_button :gender, "woman" %><%= f.label :gender, "女性" %></td>
           </tr>
 
           <tr class="public-registrations-field">

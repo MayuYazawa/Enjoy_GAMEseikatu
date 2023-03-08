@@ -1,2 +1,30 @@
-<h1>Public::GameComments#show</h1>
-<p>Find me in app/views/public/game_comments/show.html.erb</p>
+<div class= "container">
+  <div class= "row">
+    <div class= "col-2 md-3 mt-5 offset-2">
+      <div class= "col-md-2 mt-5">
+      <% render 'public/shared/game_sidebar', game_genres: @game_genres %>
+      </div>
+      <div class= "col-9 md-9 my-5 offset-1">
+        <div class= "game_image" style="margin-bottom:40px;">
+        <%#= image_tag @item.get_image(300, 300) %>
+        </div>
+        <div class= "game_comment" style="margin-bottom:20px;">
+          <h3><b><%= @game_comment.title %></b></h3>
+          <br>
+          <h5><%= @game_comment.body %></h5>
+          <br>
+          <h5><%= @game_comment.rate %></h5>
+        </div>
+        <div>
+          <% if admin_signed_in? %>
+            <%= link_to "編集する", edit_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %>
+            <%= link_to "削除する", game_path(@game.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_game_#{@game.id}" %>
+          <% end %>
+          <% if @game.user == current_user %>
+            <%= link_to "編集する", edit_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

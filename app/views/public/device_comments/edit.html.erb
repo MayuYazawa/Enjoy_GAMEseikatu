@@ -1,2 +1,49 @@
-<h1>Public::DeviceComments#edit</h1>
-<p>Find me in app/views/public/device_comments/edit.html.erb</p>
+<div class="container">
+
+  <div class="row"  style="margin-top:25px;">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h4>ゲーム投稿編集</h4>
+    </div>
+  </div>
+  <div class="row ml-5" style="margin-bottom:25px;">
+    <div class="col-sm-10 px-sm-0 mx-auto">
+      <%= form_with model: @game, url: game_path(@game.id) do |f| %>
+        <table class="table table-borderless text-secondary">
+          <!--<tr>
+            <th><%#= f.label :game_image, "ゲーム画像" %></th>
+            <td><%#= f.file_field :game_image, accept: "image/*" %></td>
+          </tr>-->
+          <tr>
+            <th><%= f.label :game_name, "ゲームタイトル" %></th>
+            <td><%= f.text_field :game_name, :placeholder => "ゲームタイトル", size: 47 %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :game_genre_id, "ゲームジャンル" %></th>
+            <td><%= f.collection_select :game_genre_id, GameGenre.all, :id, :game_genre_name, {include_blank: "--選択してください--"} %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :game_caption, "ゲーム説明" %></th>
+            <td><%= f.text_area :game_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :system, "システム要件" %></th>
+            <td><%= f.text_area :system, :placeholder => "ここにシステム要件を記述します", size: "50x3" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :development, "開発元" %></th>
+            <td><%= f.text_area :development, :placeholder => "ここに開発元を記述します", size: "50x3" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :release, "リリース日" %></th>
+            <td><%= f.date_select :release, selected: Date.today %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :price, "税抜価格" %></th>
+            <td><%= f.number_field :price, :placeholder => "1000" %>円</td>
+          </tr>
+        </table>
+        <%= f.submit "変更を保存", class: 'btn btn-success btn-lg' %>
+      <% end %>
+    </div>
+  </div>
+</div>

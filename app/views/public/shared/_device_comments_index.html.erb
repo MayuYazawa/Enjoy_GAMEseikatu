@@ -1,0 +1,36 @@
+<table>
+  <tbody>
+      <% device.device_comments.each do |device_comment| %>
+      <tr>
+
+        <td>
+          <%= link_to user_path(device_comment.user) do %>
+            <%#= image_tag book_comment.user.get_profile_image, size: "100x100" %><br>
+            <%= device_comment.user.username %>
+          <% end %>
+        </td>
+        <td><%= device_comment.title %></td>
+        <td><%= device_comment.body %></td>
+        <td>
+          <div id="rate_<%= device_comment.id %>"></div>
+        </td>
+        <td>
+          <% if device_comment.user == current_user %>
+            <%= link_to "削除する", device_comment_path(device_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+          <% end %>
+        </td>
+      </tr>
+      <script>
+        raty(document.querySelector('#rate_<%= device_comment.id %>'),
+        {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'device_comment[rate]',
+          score: <%= device_comment.rate ||= 0 %>,
+          readOnly: true
+        });
+      </script>
+      <% end %>
+  </tbody>
+</table>

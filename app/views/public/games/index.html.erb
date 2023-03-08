@@ -30,7 +30,21 @@
             <p class= "price">
               <%= game.price %>(税別）
             </p>
-          </div>
+            <div id="post_raty"></div>
+            <script>
+            // scriptファイルをどのidの部分に配置するかを指定
+            // let elem = document.querySelector('#post_raty');
+            // let opt = {  
+            //星画像の指定などのオプションをここに記述,
+            // };
+            // raty(elem,opt);
+            </script>
+            <!--<p class= "rate">-->
+            <!--  <%#= game.price %>(税別）-->
+            <!--</p>-->
+            <p class= "game_comments_counter">
+              <%= render 'public/shared/game_comments_counter', game: game %>
+            </p>
         <% end %>
       </div>
       <%= paginate @games %>

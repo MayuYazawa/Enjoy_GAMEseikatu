@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
+    get "search" => "searches#search"
     # post "users/guest_sign_in", to: "sessions#guest_sign_in"
 
     resources :games, only: [:index, :show, :new, :update, :create, :destroy, :edit]

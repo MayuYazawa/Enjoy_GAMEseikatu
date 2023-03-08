@@ -19,4 +19,18 @@ class Device < ApplicationRecord
     end
     device_image.variant(resize_to_fill: [width, height], gravity: :center).processed
   end
+  
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @device = Device.where("title LIKE?","#{word}")
+    elsif search == "forward_match"
+      @device = Device.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @device = Device.where("title LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @device = Device.where("title LIKE?","%#{word}%")
+    else
+      @device = Device.all
+    end
+  end
 end

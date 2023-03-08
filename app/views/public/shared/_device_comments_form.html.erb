@@ -1,0 +1,16 @@
+<%= form_with(model: device_comment, url: device_comments_path, local: false) do |f| %>
+  <%= f.text_field :title, :placeholder => "コメントタイトル", size: 47 %>
+  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
+  <%= f.hidden_field :device_id, value: device.id %>
+  <div id="post_raty"></div>
+  <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>
+
+<script>
+  raty(document.querySelector('#post_raty'),{
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'game_comment[rate]'
+   });
+</script>

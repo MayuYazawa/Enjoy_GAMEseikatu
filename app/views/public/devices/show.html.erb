@@ -32,6 +32,11 @@
           <%= link_to "編集する", edit_device_path(@device), class: "btn btn-sm btn-success edit_device_#{@device.id}" %>
         <% end %>
       </div>
+
+      <div class="device-comments-index">
+        <%= render "public/shared/device_comments_index", device: @device %>
+      </div>
+      <%= render "public/shared/device_comments_form", device: @device, device_comment: @device_comment %>
     </div>
   </div>
   <!--<div class="row" style="margin-bottom:25px;">
@@ -51,3 +56,4 @@
 
   </div>-->
 </div>
+

@@ -1,0 +1,43 @@
+<h2>Results index</h2>
+
+<table class="table table-hover table-inverse">
+  <% if @range == "User" %>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% elsif %>
+    <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td>
+            <%= link_to game_path(game) do %>
+              <%#= image_tag game.get_image(150, 150) %>
+            <% end %>
+          </td>
+          <td><%= game.game_name %></td>
+          <td><%= game.price %>(税別)</td>
+          <!--<td>レビュー</td>-->
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <tbody>
+      <% @devices.each do |device| %>
+        <tr>
+          <td>
+            <%= link_to device_path(device) do %>
+              <%#= image_tag game.get_image(150, 150) %>
+            <% end %>
+          </td>
+          <td><%= device.device_name %></td>
+          <td><%= device.price %>(税別)</td>
+          <!--<td>レビュー</td>-->
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

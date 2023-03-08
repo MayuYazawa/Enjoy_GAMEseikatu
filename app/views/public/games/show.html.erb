@@ -34,6 +34,13 @@
           <%= link_to "編集する", edit_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %>
         <% end %>
       </div>
+      
+      <div class="game-comments-index">
+        <%= render "public/shared/game_comments_index", game: @game %>
+      </div>
+      
+      <%= render "public/shared/game_comments_form", game: @game, game_comment: @game_comment %>
+      
     </div>
   </div>
   <!--<div class="row" style="margin-bottom:25px;">

@@ -1,0 +1,70 @@
+<h2>検索結果</h2>
+
+<table class="table table-hover table-inverse">
+  <% if @range == "User" %>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.username %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% elsif @range == "Game" %>
+    <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td>
+            <%= link_to game_path(game) do %>
+              <%#= image_tag game.get_image(150, 150) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to game_path(game) do %>
+              <%= game.game_name %>
+            <% end %>
+          </td>
+          <div id="rate_<%= game.id %>"></div>
+            <script>
+              raty(document.querySelector('#rate_<%= game.id %>'),
+              {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              scoreName: 'game_comment[rate]',
+              score: <%= game.game_comments.average(:rate) %>,
+              readOnly: true
+              });
+            </script>
+          <td><%= game.price %>(税別)</td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <tbody>
+      <% @devices.each do |device| %>
+        <tr>
+          <td>
+            <%= link_to device_path(device) do %>
+              <%#= image_tag game.get_image(150, 150) %>
+            <% end %>
+          </td>
+          <td><%= device.device_name %></td>
+          <div id="rate_<%= device.id %>"></div>
+            <script>
+              raty(document.querySelector('#rate_<%= device.id %>'),
+              {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              scoreName: 'device_comment[rate]',
+              score: <%= device.device_comments.average(:rate) %>,
+              readOnly: true
+              });
+            </script>
+          <td><%= device.price %>(税別)</td>
+          <!--<td>レビュー</td>-->
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

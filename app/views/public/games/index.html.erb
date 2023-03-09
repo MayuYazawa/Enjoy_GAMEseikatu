@@ -27,20 +27,24 @@
                 <%= game.game_name %>
               <% end %>
             </p>
+            <div id="rate_<%= game.id %>"></div>
+            <script>
+              raty(document.querySelector('#rate_<%= game.id %>'),
+              {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              scoreName: 'game_comment[rate]',
+              score: <%= game.game_comments.average(:rate) %>,
+              readOnly: true
+              });
+            </script>
             <p class= "price">
               <%= game.price %>(税別）
             </p>
-            <div id="post_raty"></div>
-            <script>
-            // scriptファイルをどのidの部分に配置するかを指定
-            // let elem = document.querySelector('#post_raty');
-            // let opt = {  
-            //星画像の指定などのオプションをここに記述,
-            // };
-            // raty(elem,opt);
-            </script>
+
             <!--<p class= "rate">-->
-            <!--  <%#= game.price %>(税別）-->
+            <!--  <%#= game.game_comments.average(:rate) %>-->
             <!--</p>-->
             <p class= "game_comments_counter">
               <%= render 'public/shared/game_comments_counter', game: game %>

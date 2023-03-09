@@ -10,6 +10,18 @@
       </div>
       <div class= "game" style="margin-bottom:20px;">
         <h3><b><%= @game.game_name %></b></h3>
+        <div id="rate_<%= @game.id %>"></div>
+            <script>
+              raty(document.querySelector('#rate_<%= @game.id %>'),
+              {
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              scoreName: 'game_comment[rate]',
+              score: <%= @game.game_comments.average(:rate) %>,
+              readOnly: true
+              });
+            </script>
         <br>
         <h5><%= @game.game_genre.game_genre_name %></h5>
         <br>
@@ -34,7 +46,7 @@
           <%= link_to "編集する", edit_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %>
         <% end %>
       </div>
-      
+
       <div class="game-comments-index">
         <%= render "public/shared/game_comments_index", game: @game %>
       </div>

@@ -26,22 +26,25 @@ class Public::DeviceCommentsController < ApplicationController
   end
 
   def index
-
+    @device_comments = current_user.device_comments.page(params[:page]).per(10)
   end
 
   def show
-    @device = Device.find(params[:id])
-    @device_comment = DeviceComment.new
+    # @device = Device.find(params[:id])
+    @device_comment = DeviceComment.find(params[:id])
+    # @device_comment = DeviceComment.new
     @device_genres = DeviceGenre.all
       if params[:device_genre_id].present?
         @device_genre = GeviceGenre.find(params[:device_genre_id])
         @devices = @device_genre.page(params[:page]).per(8)
       end
+    @device_comment_lists = @device_comment_details
   end
 
   def destroy
     @device_comment = DeviceComment.find(params[:id])
     @device_comment.destroy
+    redirect_to device_comments_path
   end
 
   private

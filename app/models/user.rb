@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :device_comment_goods
   has_many :games
   has_many :devises
+  has_many :device_comments
 
   with_options presence: true do
     validates :username
@@ -25,16 +26,16 @@ class User < ApplicationRecord
       user.username = "guestuser"
     end
   end
-  
+
   def self.looks(search, word)
     if search == "perfect_match"
-      @user = User.where("name LIKE?", "#{word}")
+      @user = User.where("username LIKE?", "#{word}")
     elsif search == "forward_match"
-      @user = User.where("name LIKE?","#{word}%")
+      @user = User.where("username LIKE?","#{word}%")
     elsif search == "backward_match"
-      @user = User.where("name LIKE?","%#{word}")
+      @user = User.where("username LIKE?","%#{word}")
     elsif search == "partial_match"
-      @user = User.where("name LIKE?","%#{word}%")
+      @user = User.where("username LIKE?","%#{word}%")
     else
       @user = User.all
     end

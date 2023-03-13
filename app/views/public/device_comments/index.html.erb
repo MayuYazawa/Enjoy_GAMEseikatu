@@ -1,2 +1,48 @@
-<h1>Public::DeviceComments#index</h1>
-<p>Find me in app/views/public/device_comments/index.html.erb</p>
+<div class="container">
+  <div class="row mt-5">
+    <div class="order-text col-sm-12 px-sm-0" style="margin-bottom:15px;">
+      <h4><b>デバイス・周辺機器コメント履歴一覧</b></h4>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-sm-12 px-sm-0">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th class="col-md-2">コメント日時</th>
+            <th class="col-md-3">タイトル</th>
+            <th class="col-md-2">コメント内容</th>
+            <th class="col-md-2">レビュー</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @device_comments.each do |device_comment| %>
+            <tr>
+              <td><%= device_comment.created_at.strftime('%Y年/%m月/%d日') %></td>
+              <td><%= device_comment.title %></td>
+              <td><%= device_comment.body.truncate(10, omission: '…') %></td>
+              <td>
+                <div id="rate_<%= device_comment.id %>"></div>
+                <script>
+                  raty(document.querySelector('#rate_<%= device_comment.id %>'),
+                  {
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  scoreName: 'device_comment[rate]',
+                  score: <%= device_comment.rate ||= 0 %>,
+                  readOnly: true
+                  });
+                </script>
+              </td>
+              <td>
+                <%= link_to "表示する", device_comment_path(device_comment.id), class: "btn btn-success" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @device_comments %>
+    </div>
+  </div>
+</div>

@@ -11,19 +11,12 @@
         <div class= "game_comment" style="margin-bottom:20px;">
           <h3><b><%= @game_comment.title %></b></h3>
           <br>
-          <h5><%= @game_comment.body %></h5>
+          <h5><%= simple_format(@game_comment.body) %></h5>
           <br>
           <h5><%= @game_comment.rate %></h5>
         </div>
         <div>
-          <% if admin_signed_in? %>
-            <%= link_to "編集する", edit_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %>
-            <%= link_to "削除する", game_path(@game.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_game_#{@game.id}" %>
-          <% end %>
-          <% if @game.user == current_user %>
-            <%= link_to "編集する", edit_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %>
-          <% end %>
-        </div>
+            <%= link_to "削除する", game_comment_path(@game_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_game_comment_#{@game_comment.id}" %>
       </div>
     </div>
   </div>

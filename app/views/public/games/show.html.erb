@@ -12,6 +12,7 @@
         <h3><b><%= @game.game_name %></b></h3>
         <div id="rate_<%= @game.id %>"></div>
             <script>
+              $('#rate_<%= @game.id %>').empty();
               raty(document.querySelector('#rate_<%= @game.id %>'),
               {
               starOn: "<%= asset_path('star-on.png') %>",

@@ -15,15 +15,15 @@
       </h2>
 
       <div class= "row text-center">
-        <% @devices.each do |game| %>
+        <% @devices.each do |device| %>
           <div class= "col-md-3 mt-5">
-            <div class= "item_image">
+            <div class= "device_image">
               <%= link_to device_path(device) do %>
                 <%= image_tag device.get_image(150, 150) %>
               <% end %>
             </div>
             <p class= "device_name">
-              <%= device.deice_name %>
+              <%= device.device_name %>
             </p>
             <div id="rate_<%= device.id %>"></div>
             <script>
@@ -43,6 +43,7 @@
             <p class= "device_comments_counter">
               <%= render 'public/shared/device_comments_counter', device: device %>
             </p>
+          </div>
         <% end %>
       </div>
       <%= paginate @devices %>

@@ -31,12 +31,12 @@
 
         <% if admin_signed_in? %>
           <li>
-            <%= link_to "/", class: 'nav-link text-dark' do %>
+            <%= link_to admin_game_comments_path, class: 'nav-link text-dark' do %>
               <i class="fas fa-utensils"></i> ゲーム投稿コメント一覧
             <% end %>
           </li>
           <li>
-            <%= link_to "/", class: 'nav-link text-dark' do %>
+            <%= link_to  admin_device_comments_path, class: 'nav-link text-dark' do %>
               <i class="fas fa-users"></i> デバイス・周辺機器コメント一覧
             <% end %>
           </li>

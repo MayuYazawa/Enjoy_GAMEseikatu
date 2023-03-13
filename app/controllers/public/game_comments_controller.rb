@@ -27,21 +27,25 @@ class Public::GameCommentsController < ApplicationController
   end
 
   def index
+    @game_comments = current_user.game_comments.page(params[:page]).per(10)
   end
 
   def show
-    @game = Game.find(params[:id])
-    @game_comment = GameComment.new
+    # @game = Game.find(params[:id])
+    @game_comment = GameComment.find(params[:id])
+    # @game_comment = GameComment.new
     @game_genres = GameGenre.all
       if params[:game_genre_id].present?
         @game_genre = GameGenre.find(params[:game_genre_id])
         @games = @game_genre.page(params[:page]).per(8)
       end
+    @game_comment_lists = @game_comment_details
   end
 
   def destroy
     @game_comment = GameComment.find(params[:id])
     @game_comment.destroy
+    redirect_to game_comments_path
   end
 
   private

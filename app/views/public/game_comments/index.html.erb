@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="order-text col-sm-12 px-sm-0" style="margin-bottom:15px;">
+      <h4><b>ゲームコメント履歴一覧</b></h4>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-sm-12 px-sm-0">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th class="col-md-2">コメント日時</th>
+            <th class="col-md-3">タイトル</th>
+            <th class="col-md-2">コメント内容</th>
+            <th class="col-md-2">レビュー</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @game_comments.each do |game_comment| %>
+            <tr>
+              <td><%= game_comment.created_at.strftime('%Y年/%m月/%d日') %></td>
+              <td><%= game_comment.title %></td>
+              <td><%= game_comment.body.truncate(10, omission: '…') %></td>
+              <td>
+                <div id="rate_<%= game_comment.id %>"></div>
+                <script>
+                  raty(document.querySelector('#rate_<%= game_comment.id %>'),
+                  {
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  scoreName: 'game_comment[rate]',
+                  score: <%= game_comment.rate ||= 0 %>,
+                  readOnly: true
+                  });
+                </script>
+              </td>
+              <td>
+                <%= link_to "表示する", game_comment_path(game_comment.id), class: "btn btn-success" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @game_comments %>
+    </div>
+  </div>
+</div>
+

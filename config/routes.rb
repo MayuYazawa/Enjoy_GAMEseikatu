@@ -49,8 +49,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update, :withdraw, :return_member]
     resources :game_genres, only: [:index, :create, :edit, :update, :destroy]
     resources :device_genres, only: [:index, :create, :edit, :update, :destroy]
-    resources :game_comments, only: [:index, :destroy]
-    resources :device_comments, only: [:index, :destroy]
+    resources :game_comments, only: [:index, :current_user_game_comment, :show, :update, :destroy]
+    resources :device_comments, only: [:index, :current_user_device_comment, :show, :update, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

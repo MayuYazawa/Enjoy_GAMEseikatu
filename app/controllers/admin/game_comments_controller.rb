@@ -11,7 +11,6 @@ before_action :authenticate_admin!
 
   def show
     @game_comment = GameComment.find(params[:id])
-    @game_comment_lists = @game_comment.game_comment.id
   end
 
   def update

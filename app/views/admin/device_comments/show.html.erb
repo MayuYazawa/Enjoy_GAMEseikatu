@@ -1,0 +1,19 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "col-9 md-9 my-5 offset-1">
+      <div class= "device_image" style="margin-bottom:40px;">
+        <%= image_tag @divice.get_image(300, 300) %>
+      </div>
+      <div class= "device_comment" style="margin-bottom:20px;">
+        <h3><b><%= @device_comment.title %></b></h3>
+        <br>
+          <h5><%= simple_format(@device_comment.body) %></h5>
+        <br>
+        <h5><%= @device_comment.rate %></h5>
+      </div>
+      <div>
+          <%= link_to "削除する", device_comment_path(@device_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_comment_#{@device_comment.id}" %>
+      </div>
+    </div>
+  </div>
+</div>

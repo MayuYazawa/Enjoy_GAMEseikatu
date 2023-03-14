@@ -5,6 +5,7 @@ class Game < ApplicationRecord
   has_many :game_comments
   belongs_to :game_genre
   belongs_to :user
+  has_many :game_goods
 
   with_options presence: true do
     validates :game_name

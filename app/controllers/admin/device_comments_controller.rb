@@ -10,7 +10,6 @@ before_action :authenticate_admin!
 
   def show
     @device_comment = DeviceComment.find(params[:id])
-    @device_comment_lists = @device_comment.device_comment_details
   end
 
   def update

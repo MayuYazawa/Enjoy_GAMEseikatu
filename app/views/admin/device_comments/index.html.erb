@@ -19,31 +19,32 @@
       </thead>
       <tbody>
         <% @device_comments.each do |device_comment| %>
-        <tr class="light-text">
-          <td>
-            <%= link_to admin_device_comment_path(device_comment), class: "text-dark" do %>
+          <tr class="light-text">
+            <td>
               <%= device_comment.created_at.strftime('%Y年/%m月/%d日 %H:%M:%S') %>
-            <% end %>
-          </td>
-          <td><%= game_comment.username %></td>
-          <td><%= game_comment.title %></td>
-          <td><%= game_comment.body.truncate(10, omission: '…' %></td>
-          <td>
-            <div id="rate_<%= device_comment.id %>"></div>
-            <script>
-              raty(document.querySelector('#rate_<%= device_comment.id %>'),
-              {
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              scoreName: 'device_comment[rate]',
-              score: <%= device_comment.rate ||= 0 %>,
-              readOnly: true
-              });
-            </script>
-          </td>
-          <td><%= link_to "削除する", admin_device_comment_path(device_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_comment_#{device_coment.id}" %></td>
-        </tr>
+            </td>
+            <td><%= game_comment.username %></td>
+            <td><%= game_comment.title %></td>
+            <td><%= game_comment.body.truncate(10, omission: '…') %></td>
+            <td>
+              <div id="rate_<%= device_comment.id %>"></div>
+              <script>
+                raty(document.querySelector('#rate_<%= device_comment.id %>'),
+                {
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                scoreName: 'device_comment[rate]',
+                score: <%= device_comment.rate ||= 0 %>,
+                readOnly: true
+                });
+              </script>
+            </td>
+            <td>
+              <%= link_to "表示する", admin_device_comment_path(device_comment.id), class: "btn btn-success" %>
+              <%= link_to "削除する", admin_device_comment_path(device_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_comment_#{device_coment.id}" %>
+              </td>
+          </tr>
         <% end %>
       </tbody>
     </table>

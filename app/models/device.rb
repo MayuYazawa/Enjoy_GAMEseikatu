@@ -19,7 +19,7 @@ class Device < ApplicationRecord
     end
     device_image.variant(resize_to_fill: [width, height], gravity: :center).processed
   end
-  
+
   def self.looks(search, word)
     if search == "perfect_match"
       @device = Device.where("title LIKE?","#{word}")
@@ -32,5 +32,9 @@ class Device < ApplicationRecord
     else
       @device = Device.all
     end
+  end
+
+  def liked_by?(user)
+    device_goods.exists?(user_id: user.id)
   end
 end

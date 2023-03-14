@@ -4,4 +4,7 @@ class GameComment < ApplicationRecord
   belongs_to :user
   belongs_to :game
 
+  def liked_by?(user)
+    game_comment_goods.exists?(user_id: user.id)
+  end
 end

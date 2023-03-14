@@ -34,4 +34,8 @@ class Game < ApplicationRecord
       @game = Game.all
     end
   end
+
+  def liked_by?(user)
+    game_goods.exists?(user_id: user.id)
+  end
 end

@@ -43,6 +43,9 @@
             <p class= "device_comments_counter">
               <%= render 'public/shared/device_comments_counter', device: device %>
             </p>
+            <div id= "device_<%= device.id %>">
+              <%= render "public/shared/device_goods", device: device %>
+            </div>
           </div>
         <% end %>
       </div>

@@ -1,0 +1,11 @@
+<% if device.liked_by?(current_user) %>
+  <%= link_to  device_goods_path(device), method: :delete do %>
+    <i class="fas fa-heart"></i>
+    <%= device.device_goods.count %>
+  <% end %>
+<% else %>
+  <%= link_to device_goods_path(device), method: :post do %>
+    <i class="far fa-heart"></i>
+    <%= device.device_goods.count %>
+  <% end %>
+<% end %>

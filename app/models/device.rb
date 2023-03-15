@@ -3,6 +3,7 @@ class Device < ApplicationRecord
   has_one_attached :device_image
 
   has_many :device_comments
+  has_many :device_goods
   belongs_to :device_genre
   belongs_to :user
 

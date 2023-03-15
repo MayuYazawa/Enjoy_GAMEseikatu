@@ -15,9 +15,14 @@
           <div id="rate_<%= device_comment.id %>"></div>
         </td>
         <td>
+          <div id= "device_comment_<%= device_comment.id %>">
+            <%= render "public/shared/device_comment_goods", device_comment: device_comment %>
+          </div>
+        </td>
+        <td>
           <% if device_comment.user == current_user %>
             <%= link_to "編集する", edit_device_comment_path(device_comment), class: "btn btn-sm btn-success edit_device_comment#{device.id}" %>
-            <%= link_to "削除する", device_comment_path(device_comment), method: :delete, data: {confirm: '本当に消しますか？' }, class: "btn btn-danger destroy_device_comment_#{device.id}", remote: true %>
+            <%= link_to "削除する", device_path(device_comment), method: :delete, data: {confirm: '本当に消しますか？' }, class: "btn btn-danger destroy_device_comment_#{device.id}", remote: true %>
           <% end %>
         </td>
       </tr>

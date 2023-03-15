@@ -3,7 +3,7 @@
   <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
   <%= f.hidden_field :device_id, value: device.id %>
   <div id="post_raty"></div>
-  <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+  <%= f.submit "送信する", class: "btn btn-success pull-right" %>
 <% end %>
 
 <script>
@@ -11,6 +11,6 @@
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
-    scoreName: 'game_comment[rate]'
+    scoreName: 'device_comment[rate]'
    });
 </script>

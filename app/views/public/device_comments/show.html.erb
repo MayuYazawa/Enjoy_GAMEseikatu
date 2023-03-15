@@ -14,6 +14,9 @@
           <br>
           <h5><%= @device_comment.rate %></h5>
         </div>
+        <div id= "device_comment_<%= @device_comment.id %>">
+          <%= render "public/shared/device_comment_goods", device_comment: @device_comment %>
+        </div>
         <div>
             <%= link_to "削除する", device_comment_path(@device_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_comment_#{@device_comment.id}" %>
       </div>

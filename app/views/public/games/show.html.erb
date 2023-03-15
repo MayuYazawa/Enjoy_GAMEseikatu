@@ -52,6 +52,10 @@
         <%= render "public/shared/game_comments_index", game: @game %>
       </div>
       <%= render "public/shared/game_comments_form", game: @game, game_comment: @game_comment %>
+
+      <div id= "game_<%= @game.id %>">
+        <%= render "public/shared/game_goods", game: @game %>
+      </div>
     </div>
   </div>
 </div>

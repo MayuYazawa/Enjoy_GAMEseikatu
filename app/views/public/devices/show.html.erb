@@ -10,10 +10,10 @@
       </div>
       <div class= "device" style="margin-bottom:20px;">
         <h3><b><%= @device.device_name %></b></h3>
-        <div id="rate_<%= @device.id %>"></div>
+        <div id="rate2_<%= @device.id %>"></div>
             <script>
-              $('#rate_<%= @device.id %>').empty();
-              raty(document.querySelector('#rate_<%= @device.id %>'),
+              $('#rate2_<%= @device.id %>').empty();
+              raty(document.querySelector('#rate2_<%= @device.id %>'),
               {
               starOn: "<%= asset_path('star-on.png') %>",
               starOff: "<%= asset_path('star-off.png') %>",
@@ -50,23 +50,10 @@
         <%= render "public/shared/device_comments_index", device: @device %>
       </div>
       <%= render "public/shared/device_comments_form", device: @device, device_comment: @device_comment %>
+      <div id= "device_<%= @device.id %>">
+        <%= render "public/shared/device_goods", device: @device %>
+      </div>
     </div>
   </div>
-  <!--<div class="row" style="margin-bottom:25px;">
-    <div class= "col-md-2 cart">
-      <%#= form_with(model: @cart_item, url: cart_items_path(@cart_item)) do |f| %>
-        <div class= "text mx-2">
-          <%#if @item.sale_status == true %>
-            <%#= f.hidden_field :item_id, value: @item.id %>
-            <%#= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-            <%#= f.submit "カートに入れる", class: "btn btn-success" %>
-          <%# else %>
-            <h3>売り切れ中</h3>
-          <%# end %>
-        </div>
-      <%# end %>
-    </div>
-
-  </div>-->
 </div>
 

@@ -36,9 +36,7 @@
                 </script>
               </td>
               <td>
-                <div id= "game_comment<%= game_comment.id %>">
-                  <%= render "public/shared/game_comment_goods", game_comment: game_comment %>
-                </div>
+               <!--いいね総カウント-->
               </td>
               <td>
                 <%= link_to "表示する", game_comment_path(game_comment.id), class: "btn btn-success" %>

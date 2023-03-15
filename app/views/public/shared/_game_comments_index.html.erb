@@ -15,9 +15,14 @@
           <div id="rate_<%= game_comment.id %>"></div>
         </td>
         <td>
+          <div id= "game_comment_<%= game_comment.id %>">
+            <%= render "public/shared/game_comment_goods", game_comment: game_comment %>
+          </div>
+        </td>
+        <td>
           <% if game_comment.user == current_user %>
             <%= link_to "編集する", edit_game_comment_path(game_comment), class: "btn btn-sm btn-success edit_game_comment#{game.id}" %>
-            <%= link_to "削除する", game_comment_path(game_comment), method: :delete, data: {confirm: '本当に消しますか？' }, class: "btn btn-sm  btn-danger destroy_game_comment_#{game.id}", remote: true %>
+            <%= link_to "削除する", game_path(game_comment), method: :delete, data: {confirm: '本当に消しますか？' }, class: "btn btn-sm  btn-danger destroy_game_comment#{game.id}", remote: true %>
           <% end %>
         </td>
       </tr>

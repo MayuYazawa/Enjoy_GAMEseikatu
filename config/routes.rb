@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     # post "users/guest_sign_in", to: "sessions#guest_sign_in"
 
     resources :games, only: [:index, :show, :new, :update, :create, :destroy, :edit]
+    resources :game_comments, only: [:new, :create, :update, :edit, :index, :show, :destroy]
     resources :devices, only: [:index, :show, :new, :update, :create, :destroy, :edit]
+    resources :device_comments, only: [:new, :create, :update, :edit, :index, :show, :destroy]
     resources :users, only: [:show, :edit, :update, :quit, :withdraw] do
       collection do
         get 'quit'
@@ -34,12 +36,18 @@ Rails.application.routes.draw do
         get 'comment_goods'
       end
     end
-    resources :game_goods, only: [:create, :destroy]
-    resources :device_goods, only: [:create, :destroy]
-    resources :game_comments, only: [:new, :create, :update, :edit, :index, :show, :destroy]
-    resources :game_comment_goods, only: [:create, :destroy]
-    resources :device_comments, only: [:new, :create, :update, :edit, :index, :show, :destroy]
-    resources :device_comment_goods, only: [:create, :destroy]
+
+    post "/game_goods/:game_id/good", to: "game_goods#create", as: :game_goods
+    delete "/game_goods/:game_id/good", to: "game_goods#destroy", as: :game_not_goods
+
+    post "/device_goods/:device_id/good", to: "device_goods#create", as: :device_goods
+    delete "/device_goods/:device_id/good", to: "device_goods#destroy", as: :device_not_goods
+
+    post "/game_comment_goods/:game_comment_id/good", to: "game_comment_goods#create", as: :game_comment_goods
+    delete "/game_comment_goods/:game_comment_id/good", to: "game_comment_goods#destroy", as: :game_comment_not_goods
+
+    post "/device_comment_goods/:device_comment_id/good", to: "device_comment_goods#create", as: :device_comment_goods
+    delete "/device_comment_goods/:device_comment_id/good", to: "device_comment_goods#destroy", as: :device_comment_not_goods
   end
 
   # 管理者側のルーティング

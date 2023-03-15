@@ -15,6 +15,9 @@
           <br>
           <h5><%= @game_comment.rate %></h5>
         </div>
+        <div id= "game_comment_<%= @game_comment.id %>">
+          <%= render "public/shared/game_comment_goods", game_comment: @game_comment %>
+        </div>
         <div>
             <%= link_to "削除する", game_comment_path(@game_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_game_comment_#{@game_comment.id}" %>
       </div>

@@ -20,6 +20,9 @@ class Public::GamesController < ApplicationController
 
   def new
     @game = Game.new
+    if params[:jan].present?
+      @rakuten = RakutenWebService::Books::Game.search(jan: params[:jan])
+    end
     @game_genre = GameGenre.all
   end
 
@@ -39,6 +42,27 @@ class Public::GamesController < ApplicationController
   end
 
   def create
+    if params[:jan].present?
+      @rakuten = RakutenWebService::Books::Game.search(jan: params[:jan])
+      @rakuten.each do |r|
+        @game = Game.new
+        @game.game_image = r.item_url
+        @game.game_genre = GameGenre.first
+        @game.game_name  = r.title
+        @game.game_caption = r.item_caption
+        @game.price = r['itemPrice'].to_i
+        @game.system = ""
+        @game.release = "1990/01/01"
+        @game.development = "_"
+        @game.user = current_user
+        if @game.save!
+          redirect_to games_path, notice: "投稿しました。"
+        else
+          render :new
+        end
+      end
+      return
+    end
     @game = Game.new(game_params)
     @game.user_id = current_user.id
     if @game.save

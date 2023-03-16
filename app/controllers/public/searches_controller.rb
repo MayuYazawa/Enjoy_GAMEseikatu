@@ -7,9 +7,9 @@ class Public::SearchesController < ApplicationController
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
     elsif @range == "Game"
-      @games = Game.looks(params[:search], params[:word])
+      @games = RakutenWebService::Books::Game.search(title: params[:word])
     else
-      @devices = Game.looks(params[:search], params[:word])
+      @devices = RakutenWebService::Books::Game.search(title: params[:word])
     end
   end
 end

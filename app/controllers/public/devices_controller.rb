@@ -20,6 +20,9 @@ class Public::DevicesController < ApplicationController
 
   def new
     @device = Device.new
+    if params[:jan].present?
+      @rakuten = RakutenWebService::Books::Game.search(jan: params[:jan])
+    end
     @device_genre = DeviceGenre.all
   end
 
@@ -39,6 +42,26 @@ class Public::DevicesController < ApplicationController
   end
 
   def create
+    if params[:jan].present?
+      @rakuten = RakutenWebService::Books::Game.search(jan: params[:jan])
+      @rakuten.each do |r|
+        @device = Device.new
+        @device.device_image = r.item_url
+        @device.device_genre = DeviceGenre.first
+        @device.device_name  = r.title
+        @device.device_caption = r.item_caption
+        @device.price = r['itemPrice'].to_i
+        @device.brand = ""
+        @device.amazon = ""
+        @device.user = current_user
+        if @device.save!
+          redirect_to devices_path, notice: "投稿しました。"
+        else
+          render :new
+        end
+      end
+      return
+    end
     @device = Device.new(device_params)
     @device.user_id = current_user.id
     if @device.save

@@ -6,7 +6,7 @@
     </div>
     <div class= "col-9 md-9 my-5 offset-1">
       <div class= "game_image" style="margin-bottom:40px;">
-        <%#= image_tag @item.get_image(300, 300) %>
+        <%= image_tag (game['mediumImageUrl'][0]) %>
       </div>
       <div class= "game" style="margin-bottom:20px;">
         <h3><b><%= @game.game_name %></b></h3>

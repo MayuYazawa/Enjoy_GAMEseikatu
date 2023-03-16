@@ -1,21 +1,19 @@
-<header class="border-bottom" style="padding:10px;">
-  <nav class="navbar navbar-expand-lg navbar-light">
+<header class="border-bottom" style="background-color: #003366","padding:10px;">
+  <nav class="navbar navbar-expand navbar-light">
     <div class="container">
-
-
       <div class="navbar-brand">
         <% if admin_signed_in? %>
           <%= link_to admin_game_genres_path, class:'navbar-brand' do %>
-          <%#= image_tag 'logo.png', :size => '100x100' %>
+          <%= image_tag 'logo.png', :size => '100x100' %>
           <% end %>
         <% else %>
           <%= link_to root_path, class:'navbar-brand' do %>
-            <%#= image_tag 'logo.png', :size => '100x100' %>
+            <%= image_tag 'logo.png', :size => '100x100' %>
           <% end %>
         <% end %>
       </div>
 
-      <div class="user-name">
+      <div class="user-name" style= "color: #FFFFFF;">
         <br>
         <% if user_signed_in? %>
           <p><b>ようこそ、<%= current_user.username %>様</b></p>
@@ -31,32 +29,32 @@
 
         <% if admin_signed_in? %>
           <li>
-            <%= link_to admin_game_comments_path, class: 'nav-link text-dark' do %>
+            <%= link_to admin_game_comments_path, class: 'nav-link text-light' do %>
               <i class="fas fa-utensils"></i> ゲーム投稿コメント一覧
             <% end %>
           </li>
           <li>
-            <%= link_to  admin_device_comments_path, class: 'nav-link text-dark' do %>
+            <%= link_to  admin_device_comments_path, class: 'nav-link text-light' do %>
               <i class="fas fa-users"></i> デバイス・周辺機器コメント一覧
             <% end %>
           </li>
           <li>
-            <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+            <%= link_to admin_users_path, class: 'nav-link text-light' do %>
               <i class="fab fa-jedi-order"></i> ユーザー一覧
             <% end %>
           </li>
           <li>
-            <%= link_to admin_game_genres_path, class: 'nav-link text-dark' do %>
+            <%= link_to admin_game_genres_path, class: 'nav-link text-light' do %>
               <i class="fas fa-university"></i> ゲームジャンル一覧
             <% end %>
           </li>
           <li>
-            <%= link_to admin_device_genres_path, class: 'nav-link text-dark' do %>
+            <%= link_to admin_device_genres_path, class: 'nav-link text-light' do %>
               <i class="fas fa-university"></i> デバイス・周辺機器ジャンル一覧
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
@@ -64,31 +62,31 @@
         <% elsif user_signed_in? %>
 
           <li>
-            <%= link_to user_path(current_user.id), class: 'nav-link text-dark' do %>
+            <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
               <i class="fab fa-pagelines"></i> マイページ
             <% end %>
           <li>
-            <%= link_to games_path, class: 'nav-link text-dark' do %>
+            <%= link_to games_path, class: 'nav-link text-light' do %>
               <i class="fas fa-utensils"></i> ゲーム一覧
             <% end %>
           </li>
           <li>
-            <%= link_to devices_path, class: 'nav-link text-dark' do %>
+            <%= link_to devices_path, class: 'nav-link text-light' do %>
               <i class="fas fa-utensils"></i> デバイス・周辺機器一覧
             <% end %>
           </li>
           <li>
-            <%= link_to new_game_path, class: 'nav-link text-dark' do %>
+            <%= link_to new_game_path, class: 'nav-link text-light' do %>
               <i class="fas fa-utensils"></i> ゲーム新規投稿
             <% end %>
           </li>
           <li>
-            <%= link_to new_device_path, class: 'nav-link text-dark' do %>
+            <%= link_to new_device_path, class: 'nav-link text-light' do %>
               <i class="fas fa-utensils"></i> デバイス・周辺機器新規投稿
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
@@ -96,22 +94,22 @@
         <% else %>
 
           <li>
-            <%= link_to about_path, class: 'nav-link text-dark' do %>
+            <%= link_to about_path, class: 'nav-link text-light' do %>
               <i class="fas fa-stroopwafel"></i> About
             <% end %>
           </li>
           <li>
-            <%= link_to games_path, class: 'nav-link text-dark' do %>
+            <%= link_to games_path, class: 'nav-link text-light' do %>
               <i class="fas fa-utensils"></i> ゲーム一覧
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+            <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
               <i class="fas fa-user-plus"></i> 新規登録
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+            <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-in-alt"></i> ログイン
             <% end %>
           </li>

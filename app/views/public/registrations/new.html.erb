@@ -6,53 +6,37 @@
 
     <div class="public-registrations-table">
       <%= form_with model: @user, url: user_registration_path do |f| %>
-
-        <table>
-          <tr class="public-registrations-field">
-
-            <th><%= f.label :username, "ユーザーネーム" %></th>
-            <td><%= f.text_field :username, size: 25, class: "textlines-radius" %></td>
-          </tr>
-
-          <tr class="public-registrations-field">
-            <th><%= f.label :"メールアドレス" %></th>
-
-            <td><%= f.email_field :email, autofocus: true, size: 25, autocomplete: "email", class: "textlines-radius" %></td>
-          </tr>
-
-          <tr>
-            <th><%= f.label :"性別" %></th>
-
-            <td><%= f.radio_button :gender, "man", checked: true %><%= f.label :gender, "男性" %>
-                <%= f.radio_button :gender, "woman" %><%= f.label :gender, "女性" %></td>
-          </tr>
-
-          <tr class="public-registrations-field">
-            <th>
-              <%= f.label :"パスワード" %>
+        <div class= "user_profile">
+          <div class="public-registrations-field">
+            <%= f.label :username, "ユーザーネーム" %>
+            <%= f.text_field :username, size: 25, class: "textlines-radius" %>
+          </div>
+          <div class="public-registrations-field">
+            <%= f.label :"メールアドレス" %>
+            <%= f.email_field :email, autofocus: true, size: 25, autocomplete: "email", class: "textlines-radius" %>
+          </div>
+          <div class="gender">
+            <%= f.label :"性別" %>
+            <%= f.radio_button :gender, "man", checked: true %><%= f.label :gender, "男性" %>
+            <%= f.radio_button :gender, "woman" %><%= f.label :gender, "女性" %><
+          </div>
+          <div class="public-registrations-field">
+            <%= f.label :"パスワード" %>
               <% if @minimum_password_length %>
-              (<%= @minimum_password_length %>文字以上)
+                (<%= @minimum_password_length %>文字以上)
               <% end %>
-            </th>
-
-            <td><%= f.password_field :password, autocomplete: "new-password", size: 25, class: "textlines-radius" %></td>
-          </tr>
-
-          <tr class="field">
-            <th><%= f.label :"パスワード(確認用）" %></th>
-
-            <td><%= f.password_field :password_confirmation, autocomplete: "new-password", size: 25, class: "textlines-radius" %></td>
-          </tr>
-
-          <tr class="public-registrations-actions">
-
-
-            <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
-          </tr>
-        </table>
+            <%= f.password_field :password, autocomplete: "new-password", size: 25, class: "textlines-radius" %>
+          </div>
+          <div class="field">
+            <%= f.label :"パスワード(確認用）" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", size: 25, class: "textlines-radius" %>
+          </div>
+          <div class="public-registrations-actions">
+            <%= f.submit "新規登録", class: "btn btn-success" %>
+          </div>
+        </div>
       <% end %>
     </div>
-
     <br>
   </div>
 </div>

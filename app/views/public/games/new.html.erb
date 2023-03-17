@@ -5,52 +5,48 @@
       <h1>ゲーム新規投稿</h1>
     </div>
   </div>
-
   <div class="row">
     <div class="col-sm-10 px-sm-0 mx-auto mb-5">
     <%= form_with model: [:game, @game], url: games_path do |f| %>
-      <table class="table table-borderless">
-        <!--<tr>
-          <th><%#= f.label :game_image, "ゲーム商品画像" %></th>
-          <td><%#= f.file_field :game_image, accept: "image/*" %></td>
-        </tr>-->
+      <div class="table table-borderless">
         <% if @rakuten.present? %>
-        <tr>
-          <td>
-            <% @rakuten.each do |r| %>
-              <%= image_tag r['mediumImageUrl'] %>
-            <% end %>
-          </td>
-        </tr>
+          <div class= "game_image">
+            <div>
+              <% @rakuten.each do |r| %>
+                <%= image_tag r['mediumImageUrl'] %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
-        <tr>
-          <th><%= f.label :game_name, "ゲームタイトル" %></th>
-          <td><%= f.text_field :game_name, :placeholder => "ゲームタイトル", size: 47 %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :game_genre_id, "ゲームジャンル" %></th>
-          <td><%= f.collection_select :game_genre_id, GameGenre.all, :id, :game_genre_name, {include_blank: "--選択してください--"} %></td>          </tr>
-        <tr>
-          <th><%= f.label :game_caption, "ゲーム説明" %></th>
-          <td><%= f.text_area :game_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :system, "システム要件" %></th>
-          <td><%= f.text_area :system, :placeholder => "ここにシステム要件を記述します", size: "50x3" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :development, "開発元" %></th>
-          <td><%= f.text_area :development, :placeholder => "ここに開発元を記述します", size: "50x3" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :release, "リリース日" %></th>
-          <td><%= f.date_select :release, selected: Date.today %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :price, "税抜価格" %></th>
-          <td><%= f.number_field :price, :placeholder => "1000" %>円</td>
-        </tr>
-      </table>
+        <div class= "game_name">
+          <%= f.label :game_name, "ゲームタイトル" %>
+          <%= f.text_field :game_name, :placeholder => "ゲームタイトル", size: 47 %>
+        </div>
+        <div class= "game_genre">
+          <%= f.label :game_genre_id, "ゲームジャンル" %>
+          <%= f.collection_select :game_genre_id, GameGenre.all, :id, :game_genre_name, {include_blank: "--選択してください--"} %>
+        </div>
+        <div class= "game_caption">
+          <%= f.label :game_caption, "ゲーム説明" %>
+          <%= f.text_area :game_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %>
+        </div>
+        <div class= "game_system">
+          <%= f.label :system, "システム要件" %>
+          <%= f.text_area :system, :placeholder => "ここにシステム要件を記述します", size: "50x3" %>
+        </div>
+        <div class= "game_system">
+          <%= f.label :development, "開発元" %>
+          <%= f.text_area :development, :placeholder => "ここに開発元を記述します", size: "50x3" %>
+        </div>
+        <div class= "game_release">
+          <%= f.label :release, "リリース日" %>
+          <%= f.date_select :release, selected: Date.today %>
+        </div>
+        <div class= "game_price">
+          <%= f.label :price, "税込価格" %>
+          <%= f.number_field :price, :placeholder => "1000" %>円
+        </div>
+      </div>
       <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
     <% end %>
     </div>

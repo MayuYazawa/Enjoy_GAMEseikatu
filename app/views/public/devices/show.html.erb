@@ -11,18 +11,18 @@
       <div class= "device" style="margin-bottom:20px;">
         <h3><b><%= @device.device_name %></b></h3>
         <div id="rate2_<%= @device.id %>"></div>
-            <script>
-              $('#rate2_<%= @device.id %>').empty();
-              raty(document.querySelector('#rate2_<%= @device.id %>'),
-              {
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              scoreName: 'device_comment[rate]',
-              score: <%= @device.device_comments.average(:rate) %>,
-              readOnly: true
-              });
-            </script>
+          <script>
+            $('#rate2_<%= @device.id %>').empty();
+            raty(document.querySelector('#rate2_<%= @device.id %>'),
+            {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            scoreName: 'device_comment[rate]',
+            score: <%= @device.device_comments.average(:rate) %>,
+            readOnly: true
+            });
+          </script>
         <br>
         <h5><%= @device.device_genre %></h5>
         <br>

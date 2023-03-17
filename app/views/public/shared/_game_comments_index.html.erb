@@ -1,31 +1,28 @@
-<table>
-  <tbody>
-      <% game.game_comments.each do |game_comment| %>
-      <tr>
-
-        <td>
-          <%= link_to user_path(game_comment.user) do %>
-            <%#= image_tag book_comment.user.get_profile_image, size: "100x100" %><br>
-            <%= game_comment.user.username %>
-          <% end %>
-        </td>
-        <td><%= game_comment.title %></td>
-        <td><%= game_comment.body %></td>
-        <td>
-          <div id="rate_<%= game_comment.id %>"></div>
-        </td>
-        <td>
-          <div id= "game_comment_<%= game_comment.id %>">
-            <%= render "public/shared/game_comment_goods", game_comment: game_comment %>
-          </div>
-        </td>
-        <td>
-          <% if game_comment.user == current_user %>
-            <%= link_to "編集する", edit_game_comment_path(game_comment), class: "btn btn-sm btn-success edit_game_comment#{game.id}" %>
-            <%= link_to "削除する", game_path(game_comment), method: :delete, data: {confirm: '本当に消しますか？' }, class: "btn btn-sm  btn-danger destroy_game_comment#{game.id}", remote: true %>
-          <% end %>
-        </td>
-      </tr>
+<div class= "game_comments_index">
+  <div class= "device_comment_index">
+     <% game.game_comments.each do |game_comment| %>
+      <div>
+        <%= link_to user_path(game_comment.user) do %>
+          <%#= image_tag book_comment.user.get_profile_image, size: "100x100" %><br>
+          <%= game_comment.user.username %>
+        <% end %>
+      </div>
+      <div><%= game_comment.title %></div>
+      <div><%= game_comment.body %></div>
+      <div>
+        <div id="rate_<%= game_comment.id %>"></div>
+      </div>
+      <div>
+        <div id= "game_comment_<%= game_comment.id %>">
+          <%= render "public/shared/game_comment_goods", game_comment: game_comment %>
+        </div>
+      </div>
+      <div>
+        <% if game_comment.user == current_user %>
+          <%= link_to "編集する", edit_game_comment_path(game_comment), class: "btn btn-sm btn-success edit_game_comment#{game.id}" %>
+          <%= link_to "削除する", game_path(game_comment), method: :delete, data: {confirm: '本当に消しますか？' }, class: "btn btn-sm  btn-danger destroy_game_comment#{game.id}", remote: true %>
+        <% end %>
+      </div>
       <script>
         raty(document.querySelector('#rate_<%= game_comment.id %>'),
         {
@@ -38,6 +35,6 @@
         });
       </script>
       <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 

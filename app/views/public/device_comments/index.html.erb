@@ -6,45 +6,41 @@
   </div>
   <div class="row mb-3">
     <div class="col-sm-12 px-sm-0">
-      <table class="table table-bordered">
-        <thead class="thead-light">
-          <tr>
-            <th class="col-md-2">コメント日時</th>
-            <th class="col-md-3">タイトル</th>
-            <th class="col-md-2">コメント内容</th>
-            <th class="col-md-2">レビュー</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @device_comments.each do |device_comment| %>
-            <tr>
-              <td><%= device_comment.created_at.strftime('%Y年/%m月/%d日') %></td>
-              <td><%= device_comment.title %></td>
-              <td><%= device_comment.body.truncate(10, omission: '…') %></td>
-              <td>
-                <div id="rate_<%= device_comment.id %>"></div>
-                <script>
-                  raty(document.querySelector('#rate_<%= device_comment.id %>'),
-                  {
-                  starOn: "<%= asset_path('star-on.png') %>",
-                  starOff: "<%= asset_path('star-off.png') %>",
-                  starHalf: "<%= asset_path('star-half.png') %>",
-                  scoreName: 'device_comment[rate]',
-                  score: <%= device_comment.rate ||= 0 %>,
-                  readOnly: true
-                  });
-                </script>
-              </td>
-              <td>
-                <!--いいね総カウント-->
-              </td>
-              <td>
-                <%= link_to "表示する", device_comment_path(device_comment.id), class: "btn btn-success" %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="thead-light">
+          <div class="col-md-2">コメント日時</div>
+          <div class="col-md-3">タイトル</div>
+          <div class="col-md-2">コメント内容</div>
+          <div class="col-md-2">レビュー</div>
+      </div>
+      <div class= "device_comments">
+        <% @device_comments.each do |device_comment| %>
+          <div class= "device_comment">
+            <div><%= device_comment.created_at.strftime('%Y年/%m月/%d日') %></div>
+            <div><%= device_comment.title %></div>
+            <div><%= device_comment.body.truncate(10, omission: '…') %></div>
+            <div>
+              <div id="rate_<%= device_comment.id %>"></div>
+              <script>
+                raty(document.querySelector('#rate_<%= device_comment.id %>'),
+                {
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                scoreName: 'device_comment[rate]',
+                score: <%= device_comment.rate ||= 0 %>,
+                readOnly: true
+                });
+              </script>
+            </div>
+            <div class= "googs_count">
+              <!--いいね総カウント-->
+            </div>
+            <div>
+              <%= link_to "表示する", device_comment_path(device_comment.id), class: "btn btn-success" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
       <%= paginate @device_comments %>
     </div>
   </div>

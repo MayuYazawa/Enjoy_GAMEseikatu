@@ -35,7 +35,7 @@
           </li>
           <li>
             <%= link_to  admin_device_comments_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> デバイス・周辺機器コメント一覧
+              <i class="fas fa-users"></i> デバイス投稿コメント一覧
             <% end %>
           </li>
           <li>
@@ -50,7 +50,7 @@
           </li>
           <li>
             <%= link_to admin_device_genres_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-university"></i> デバイス・周辺機器ジャンル一覧
+              <i class="fas fa-university"></i> デバイスジャンル一覧
             <% end %>
           </li>
           <li>
@@ -72,17 +72,17 @@
           </li>
           <li>
             <%= link_to devices_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-utensils"></i> デバイス・周辺機器一覧
+              <i class="fas fa-utensils"></i> デバイス一覧
             <% end %>
           </li>
           <li>
             <%= link_to new_game_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-utensils"></i> ゲーム新規投稿
+              <i class="fas fa-utensils"></i> ゲーム投稿
             <% end %>
           </li>
           <li>
             <%= link_to new_device_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-utensils"></i> デバイス・周辺機器新規投稿
+              <i class="fas fa-utensils"></i> デバイス投稿
             <% end %>
           </li>
           <li>
@@ -113,14 +113,12 @@
               <i class="fas fa-sign-in-alt"></i> ログイン
             <% end %>
           </li>
-
         <% end %>
         </ul>
-        <!--<form class="form-inline">-->
-          <%= render "layouts/search" %>
-        <!--</form>-->
-
       </div>
+    </div>
+    <div class= "text-right">
+      <%= render "layouts/search" %>
     </div>
   </nav>
 </header>

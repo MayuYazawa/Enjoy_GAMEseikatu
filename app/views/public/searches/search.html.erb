@@ -1,4 +1,15 @@
 <h2>検索結果</h2>
+<h5 class= "col-sm-8 px-sm-0 offset-sm-1">
+  検索結果がない場合は
+  <%= link_to new_game_path do %>
+    ゲーム投稿
+  <% end %>
+  、
+  <%= link_to new_device_path do %>
+    デバイス投稿
+  <% end %>
+  へ
+</h5>
 
 <!--table class="table table-hover table-inverse"-->
 <div class="container">
@@ -14,14 +25,14 @@
       <% @games.each do |game| %>
       <div class="row">
           <div class="col-3">
-            <%= link_to game_path(game) do %>
+            <%#= link_to game_path(game) do %>
               <%= image_tag ( game['mediumImageUrl']) %>
-            <% end %>
+            <%# end %>
           </div>
           <div class="col-4">
-            <%= link_to game_path(game) do %>
+            <%#= link_to game_path(game) do %>
               <%= game.title %>
-            <% end %>
+            <%# end %>
           </div>
           <div id="rate_<%= game.jan %>" class="col-3"></div>
             <script>
@@ -35,9 +46,9 @@
               readOnly: true
               });
             </script>
-          <div class="col-1"><%= game.item_price %>(税別)</div>
+          <div class="col-1"><%= game.item_price %>(税込)</div>
           <div class="col-1">
-            <%= link_to games_path(jan: game.jan), method: :post do %>
+            <%= link_to new_game_path(jan: game.jan) do %>
               このゲームを登録する
             <% end %>
           </div>
@@ -47,14 +58,14 @@
     <% @devices.each do |device| %>
       <div class="row">
           <div class="col-3">
-            <%= link_to device_path(device) do %>
+            <%#= link_to device_path(device) do %>
               <%= image_tag ( device['mediumImageUrl']) %>
-            <% end %>
+            <%# end %>
           </div>
           <div class="col-4">
-            <%= link_to device_path(device) do %>
+            <%#= link_to device_path(device) do %>
               <%= device.title %>
-            <% end %>
+            <%# end %>
           </div>
           <div id="rate_<%= device.jan %>" class="col-3"></div>
             <script>
@@ -68,9 +79,9 @@
               readOnly: true
               });
             </script>
-          <div class="col-1"><%= device.item_price %>(税別)</div>
+          <div class="col-1"><%= device.item_price %>(税込)</div>
           <div class="col-1">
-            <%= link_to devices_path(jan: device.jan), method: :post do %>
+            <%= link_to new_device_path(jan: device.jan) do %>
               このゲームを登録する
             <% end %>
           </div>

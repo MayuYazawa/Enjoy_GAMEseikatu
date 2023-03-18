@@ -9,44 +9,46 @@
         <% if @device_genre.present? %>
           <%= @device_genre.device_genre_name %>
         <% else %>
-          デバイス・周辺機器一覧
+          デバイス一覧
         <% end %>
         <span>(全<%= @devices.total_count %>件中 <%= @devices.count %>件）</span>
       </h2>
 
-      <div class= "row text-center">
+      <ul class="row text-center" style="list-style: none;">
         <% @devices.each do |device| %>
-          <div class= "col-md-3 mt-5">
-            <div class= "device_image">
-              <%= link_to device_path(device) do %>
-                <%= image_tag device.get_image(150, 150) %>
-              <% end %>
-            </div>
-            <p class= "device_name">
-              <%= device.device_name %>
-            </p>
-            <div id="rate_<%= device.id %>"></div>
-            <script>
-              raty(document.querySelector('#rate_<%= device.id %>'),
-              {
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              scoreName: 'device_comment[rate]',
-              score: <%= device.device_comments.average(:rate) %>,
-              readOnly: true
-              });
-            </script>
-            <p class= "price">
-              <%= device.price %>(税別）
-            </p>
-            <p class= "device_comments_counter">
-              <%= render 'public/shared/device_comments_counter', device: device %>
-            </p>
-            <!--いいね総カウント-->
+        <li class="col-6">
+          <div class= "device_image">
+          <% if device.device_image.present? %>
+            <%= image_tag device.device_image, size: "200x200"%>
+          <% end %>
           </div>
+          <p class= "device_name">
+            <%= link_to device_path(device) do %>
+              <%= device.device_name %>
+            <% end %>
+          </p>
+          <div id="rate_<%= device.id %>"></div>
+          <script>
+            raty(document.querySelector('#rate_<%= device.id %>'),
+            {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            scoreName: 'device_comment[rate]',
+            score: <%= device.device_comments.average(:rate) %>,
+            readOnly: true
+            });
+          </script>
+          <p class= "price">
+            <%= device.price %>(税別）
+          </p>
+          <p class= "device_comments_counter">
+            <%= render 'public/shared/device_comments_counter', device: device %>
+          </p>
+          <!--いいね総カウント-->
+        </li>
         <% end %>
-      </div>
+      </ul>
       <%= paginate @devices %>
     </div>
 

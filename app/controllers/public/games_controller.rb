@@ -46,14 +46,14 @@ class Public::GamesController < ApplicationController
       @rakuten = RakutenWebService::Books::Game.search(jan: params[:jan])
       @rakuten.each do |r|
         @game = Game.new
-        @game.game_image = r.item_url
+        @game.game_image = r['largeImageUrl']
         @game.game_genre = GameGenre.first
-        @game.game_name  = r.title
-        @game.game_caption = r.item_caption
-        @game.price = r['itemPrice'].to_i
-        @game.system = ""
-        @game.release = "1990/01/01"
-        @game.development = "_"
+        @game.game_name  = r['title']
+        @game.game_caption = r['itemCaption']
+        @game.price = r['itemPrice']
+        @game.system = r['hardware']
+        @game.release = r['salesDate']
+        @game.development = r['label']
         @game.user = current_user
         if @game.save!
           redirect_to games_path, notice: "投稿しました。"

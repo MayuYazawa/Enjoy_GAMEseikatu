@@ -1,5 +1,5 @@
 class GameGood < ApplicationRecord
 
   belongs_to :user
-  has_many :games
+  belongs_to :game
 end

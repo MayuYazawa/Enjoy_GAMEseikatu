@@ -1,6 +1,6 @@
 class DeviceCommentGood < ApplicationRecord
 
-  has_many :device_comments
+  belongs_to :device_comment
   belongs_to :user
 
 end

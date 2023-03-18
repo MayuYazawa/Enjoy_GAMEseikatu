@@ -1,12 +1,12 @@
 <div class= "container">
   <div class= "row">
     <!--<div class= "col-2 md-3 mt-5 offset-2">-->
-    <div class= "col-md-2 mt-5">
+    <div class= "col-md-3 mt-5">
       <%= render 'public/shared/game_sidebar', game_genres: @game_genres %>
     </div>
-    <div class= "col-9 md-9 my-5 offset-1">
+    <div class= "col-9 md-9 my-5 ">
       <div class= "game_image" style="margin-bottom:40px;">
-        <%= image_tag (game['mediumImageUrl'][0]) %>
+        <%= image_tag @game.game_image %>
       </div>
       <div class= "game" style="margin-bottom:20px;">
         <h3><b><%= @game.game_name %></b></h3>
@@ -24,20 +24,23 @@
               });
             </script>
         <br>
-        <h5><%= @game.game_genre.game_genre_name %></h5>
+        <h5>ジャンル：<%= @game.game_genre.game_genre_name %></h5>
         <br>
         <h5><%= @game.game_caption %></h5>
         <br>
-        <h5><%= @game.system %></h5>
+        <h5>メーカー：<%= @game.system %></h5>
         <br>
-        <h5><%= @game.release %></h5>
+        <h5>リリース日：<%= @game.release %></h5>
         <br>
-        <h5><%= @game.development %></h5>
+        <h5>開発元：<%= @game.development %></h5>
       </div>
       <h3 class= "mt-5">
-        ¥ <%= (@game.price*1.1).floor.to_s(:delimited) %>
+        ¥ <%= (@game.price).floor.to_s(:delimited) %>
         <span class= "tax">(税込)</span>
       </h3>
+      <div id= "game_<%= @game.id %>">
+        <%= render "public/shared/game_goods", game: @game %>
+      </div>
       <div>
         <% if admin_signed_in? %>
           <%= link_to "編集する", edit_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %>
@@ -52,10 +55,6 @@
         <%= render "public/shared/game_comments_index", game: @game %>
       </div>
       <%= render "public/shared/game_comments_form", game: @game, game_comment: @game_comment %>
-
-      <div id= "game_<%= @game.id %>">
-        <%= render "public/shared/game_goods", game: @game %>
-      </div>
     </div>
   </div>
 </div>

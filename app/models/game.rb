@@ -1,11 +1,10 @@
 class Game < ApplicationRecord
 
-  has_one_attached :game_image
 
   has_many :game_comments
+  has_many :game_goods
   belongs_to :game_genre
   belongs_to :user
-  has_many :game_goods
 
   with_options presence: true do
     validates :game_name

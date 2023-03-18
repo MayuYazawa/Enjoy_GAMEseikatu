@@ -19,7 +19,7 @@
           <div class= "col-md-3 mt-5">
             <div class= "item_image">
               <%= link_to game_path(game) do %>
-                <%= image_tag (game['smallImageUrls'][0]) %>
+                <%= image_tag game.game_image %>
               <% end %>
             </div>
             <p class= "game_name">

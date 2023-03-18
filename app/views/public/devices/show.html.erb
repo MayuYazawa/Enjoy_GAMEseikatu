@@ -1,12 +1,12 @@
 <div class= "container">
   <div class= "row">
     <!--<div class= "col-2 md-3 mt-5 offset-2">-->
-    <div class= "col-md-2 mt-5">
+    <div class= "col-md-3 mt-5">
       <%= render 'public/shared/device_sidebar', device_genres: @device_genres %>
     </div>
-    <div class= "col-9 md-9 my-5 offset-1">
+    <div class= "col-9 md-9 my-5 ">
       <div class= "device_image" style="margin-bottom:40px;">
-        <%= image_tag @device.get_image(300, 300) %>
+        <%= image_tag @device.device_image %>
       </div>
       <div class= "device" style="margin-bottom:20px;">
         <h3><b><%= @device.device_name %></b></h3>
@@ -24,18 +24,19 @@
             });
           </script>
         <br>
-        <h5><%= @device.device_genre %></h5>
+        <h5>ジャンル：<%= @device.device_genre.device_genre_name %></h5>
         <br>
         <h5><%= @device.device_caption %></h5>
         <br>
-        <h5><%= @device.brand %></h5>
-        <br>
-        <h5><%= @device.amazon %></h5>
+        <h5>メーカー：<%= @device.brand %></h5>
       </div>
       <h3 class= "mt-5">
-        ¥ <%= (@device.price*1.1).floor.to_s(:delimited) %>
+        ¥ <%= (@device.price).floor.to_s(:delimited) %>
         <span class= "tax">(税込)</span>
       </h3>
+      <div id= "device_<%= @device.id %>">
+        <%= render "public/shared/device_goods", device: @device %>
+      </div>
       <div>
         <% if admin_signed_in? %>
           <%= link_to "編集する", edit_device_path(@device), class: "btn btn-sm btn-success edit_device_#{@device.id}" %>
@@ -50,9 +51,6 @@
         <%= render "public/shared/device_comments_index", device: @device %>
       </div>
       <%= render "public/shared/device_comments_form", device: @device, device_comment: @device_comment %>
-      <div id= "device_<%= @device.id %>">
-        <%= render "public/shared/device_goods", device: @device %>
-      </div>
     </div>
   </div>
 </div>

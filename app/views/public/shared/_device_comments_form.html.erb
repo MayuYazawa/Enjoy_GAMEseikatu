@@ -1,7 +1,13 @@
 <%= form_with(model: device_comment, url: device_comments_path, local: false) do |f| %>
-  <%= f.text_field :title, :placeholder => "コメントタイトル", size: 47 %>
-  <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
-  <%= f.hidden_field :device_id, value: device.id %>
+  <div class= "comment-title">
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title, :placeholder => "コメントタイトル", size: 47 %>
+  </div>
+  <div class= "comment-body">
+    <%= f.label :body, "コメント" %><br>
+    <%= f.text_area :body, rows:'5',placeholder: "コメントをここに", class: "w-100 comment-textarea" %>
+    <%= f.hidden_field :device_id, value: device.id %>
+  </div>
   <div id="post_raty"></div>
   <%= f.submit "送信する", class: "btn btn-success pull-right" %>
 <% end %>

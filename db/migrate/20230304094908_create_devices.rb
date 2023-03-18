@@ -8,7 +8,7 @@ class CreateDevices < ActiveRecord::Migration[6.1]
       t.string :brand,              null: false, default: ""
       t.string :amazon,             null: false, default: ""
       t.integer :user_id,           null: false
-      t.string :device_image,       null: false
+      t.string :device_image
 
       t.timestamps
     end

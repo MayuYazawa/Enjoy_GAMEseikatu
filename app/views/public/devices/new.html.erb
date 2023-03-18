@@ -2,18 +2,19 @@
 
   <div class="row" style="margin-top:25px;">
    <div class="col-sm-8 px-sm-0 offset-sm-">
-      <h1>デバイス・周辺機器新規登録</h1>
+      <h1>デバイス新規登録</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-12 new_game-table tablebordered">
-    <%= form_with model: [:device, @device], url: devices_path do |f| %>
+    <%= form_with model:  @device, url: devices_path do |f| %>
       <div class="table table-borderless">
         <% if @rakuten.present? %>
           <div class= "device_image">
             <div>
               <% @rakuten.each do |r| %>
                 <%= image_tag r['mediumImageUrl'] %>
+                <%= f.hidden_field :device_image, value: r['mediumImageUrl'] %>
               <% end %>
             </div>
           </div>

@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2023_03_04_103233) do
     t.string "brand", default: "", null: false
     t.string "amazon", default: "", null: false
     t.integer "user_id", null: false
-    t.string "device_image", null: false
+    t.string "device_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -124,16 +124,17 @@ ActiveRecord::Schema.define(version: 2023_03_04_103233) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
   create_table "games", force: :cascade do |t|
     t.integer "game_genre_id", null: false
     t.string "game_name", default: "", null: false
     t.text "game_caption", null: false
     t.integer "price", null: false
     t.string "system", default: "", null: false
-    t.date "release", null: false
+    t.string "release", default: "", null: false
     t.string "development", default: "", null: false
     t.integer "user_id", null: false
-    t.string "game_image", null: false
+    t.string "game_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

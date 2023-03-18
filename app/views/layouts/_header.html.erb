@@ -76,16 +76,6 @@
             <% end %>
           </li>
           <li>
-            <%= link_to new_game_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-utensils"></i> ゲーム投稿
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_device_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-utensils"></i> デバイス投稿
-            <% end %>
-          </li>
-          <li>
             <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
@@ -101,6 +91,11 @@
           <li>
             <%= link_to games_path, class: 'nav-link text-light' do %>
               <i class="fas fa-utensils"></i> ゲーム一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to devices_path, class: 'nav-link text-light' do %>
+              <i class="fas fa-utensils"></i> デバイス一覧
             <% end %>
           </li>
           <li>

@@ -5,13 +5,13 @@
     </div>
   </div>
   <div class="row mb-3">
-    <div class="col-sm-12 px-sm-0">
-      <div class="thead-light">
+    <table class="col-sm-12 px-sm-0">
+      <thead class="thead-light">
         <th class="col-md-2">コメント日時</th>
         <th class="col-md-3">タイトル</th>
         <th class="col-md-2">コメント内容</th>
         <th class="col-md-2">レビュー</th>
-      </div>
+      </thead>
       <div class= "game_comments">
         <% @game_comments.each do |game_comment| %>
           <div class= "game_comment">
@@ -21,15 +21,17 @@
             <div>
               <div id="rate_<%= game_comment.id %>"></div>
               <script>
-                raty(document.querySelector('#rate_<%= game_comment.id %>'),
-                {
+                var ele = document.getElementById('rate_<%= game_comment.id %>')
+                var opt = {
                 starOn: "<%= asset_path('star-on.png') %>",
                 starOff: "<%= asset_path('star-off.png') %>",
                 starHalf: "<%= asset_path('star-half.png') %>",
                 scoreName: 'game_comment[rate]',
                 score: <%= game_comment.rate ||= 0 %>,
                 readOnly: true
-                });
+                };
+                if (ele) ele.innerHTML = ""
+                raty(ele, opt)
               </script>
             </div>
             <div class= "goods_count">

@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2023_03_04_103233) do
     t.integer "user_id", null: false
     t.integer "device_id", null: false
     t.string "title", default: "", null: false
-    t.text "body", default: "", null: false
+    t.text "body", null: false
     t.float "rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2023_03_04_103233) do
     t.integer "device_genre_id", null: false
     t.string "device_name", default: "", null: false
     t.text "device_caption", null: false
-    t.integer "price", null: false
+    t.integer "price", default: 0, null: false
     t.string "brand", default: "", null: false
     t.integer "user_id", null: false
     t.string "device_image"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2023_03_04_103233) do
     t.integer "user_id", null: false
     t.integer "game_id", null: false
     t.string "title", default: "", null: false
-    t.text "body", default: "", null: false
+    t.text "body", null: false
     t.float "rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -128,14 +128,15 @@ ActiveRecord::Schema.define(version: 2023_03_04_103233) do
     t.integer "game_genre_id", null: false
     t.string "game_name", default: "", null: false
     t.text "game_caption", null: false
-    t.integer "price", null: false
+    t.integer "price", default: 0, null: false
     t.string "system", default: "", null: false
     t.string "release", default: "", null: false
     t.string "development", default: "", null: false
     t.integer "user_id", null: false
-    t.string "game_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "game_image"
+    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007f737c6baca0>"
   end
 
   create_table "users", force: :cascade do |t|

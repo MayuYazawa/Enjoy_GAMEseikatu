@@ -9,7 +9,7 @@ class CreateGames < ActiveRecord::Migration[6.1]
       t.string :release,          null: false, default: ""
       t.string :development,      null: false, default: ""
       t.integer :user_id,         null: false
-      t.string :game_image,
+      t.string :game_image
 
       t.timestamps
     end

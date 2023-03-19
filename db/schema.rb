@@ -133,10 +133,9 @@ ActiveRecord::Schema.define(version: 2023_03_04_103233) do
     t.string "release", default: "", null: false
     t.string "development", default: "", null: false
     t.integer "user_id", null: false
+    t.string "game_image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "game_image"
-    t.string "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007f737c6baca0>"
   end
 
   create_table "users", force: :cascade do |t|

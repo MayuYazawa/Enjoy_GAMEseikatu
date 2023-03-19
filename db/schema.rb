@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 2023_03_04_103233) do
     t.text "device_caption", null: false
     t.integer "price", null: false
     t.string "brand", default: "", null: false
-    t.string "amazon", default: "", null: false
     t.integer "user_id", null: false
     t.string "device_image"
     t.datetime "created_at", precision: 6, null: false

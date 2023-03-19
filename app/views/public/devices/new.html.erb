@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="row" style="margin-top:25px;">
-   <div class="col-sm-8 px-sm-0 offset-sm-">
+   <div class="col-sm-8 px-sm-0 offset-sm-1">
       <h1>デバイス新規登録</h1>
     </div>
   </div>
@@ -34,10 +34,6 @@
         <div class= "device_brand">
           <%= f.label :brand, "ブランド名" %>
           <%= f.text_field :brand, :placeholder => "ここにブランド名を記述します", size: "50x3" %>
-        </div>
-        <div class= "amazon">
-          <%= f.label :amazon, "Amazonリンク" %>
-          <%= f.text_field :amazon, :placeholder => "ここにAmazonのリンクを記述します", size: "50x3" %>
         </div>
         <div class= "device_price">
           <%= f.label :price, "税込価格" %>

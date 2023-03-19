@@ -14,12 +14,12 @@
         <span>(全<%= @games.total_count %>件中 <%= @games.count %>件）</span>
       </h2>
 
-      <div class= "row text-center">
+      <ul class= "row text-center" style="list-style: none;">
         <% @games.each do |game| %>
-          <div class= "col-md-3 mt-5">
+          <li class= "col-6">
             <div class= "item_image">
-              <%= link_to game_path(game) do %>
-                <%= image_tag game.game_image %>
+              <% if game.game_image.present? %>
+                <%= image_tag game.game_image, size: "200x200" %>
               <% end %>
             </div>
             <p class= "game_name">
@@ -49,9 +49,9 @@
               <%= render 'public/shared/game_comments_counter', game: game %>
             </p>
             <!--いいね総カウント-->
-          </div>
+          </li>
         <% end %>
-      </div>
+      </ul>
       <%= paginate @games %>
     </div>
   </div>

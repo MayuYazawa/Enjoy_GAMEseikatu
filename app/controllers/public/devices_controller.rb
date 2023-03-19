@@ -27,7 +27,7 @@ class Public::DevicesController < ApplicationController
         @device.device_name  = r['title']
         @device.device_caption = r['itemCaption']
         @device.price = r['itemPrice']
-        @device.brand = r['makerCode']
+        @device.brand = r['hardware']
       end
     else
       @device = Device.new
@@ -65,6 +65,6 @@ class Public::DevicesController < ApplicationController
 
   private
   def device_params
-    params.require(:device).permit(:device_genre_id, :device_name, :device_caption, :price, :brand, :amazon, :device_image)
+    params.require(:device).permit(:device_genre_id, :device_name, :device_caption, :price, :brand, :device_image)
   end
 end

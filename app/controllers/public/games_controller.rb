@@ -19,11 +19,21 @@ class Public::GamesController < ApplicationController
   end
 
   def new
-    @game = Game.new
     if params[:jan].present?
       @rakuten = RakutenWebService::Books::Game.search(jan: params[:jan])
+      @rakuten.each do |r|
+        @game = Game.new
+        @game.game_image = r['largeImageUrl']
+        @game.game_name  = r['title']
+        @game.game_caption = r['itemCaption']
+        @game.price = r['itemPrice']
+        @game.system = r['hardware']
+        @game.release = r['salesDate']
+        @game.development = r['label']
+      end
+    else
+      @game = Game.new
     end
-    @game_genre = GameGenre.all
   end
 
   def update
@@ -42,30 +52,9 @@ class Public::GamesController < ApplicationController
   end
 
   def create
-    if params[:jan].present?
-      @rakuten = RakutenWebService::Books::Game.search(jan: params[:jan])
-      @rakuten.each do |r|
-        @game = Game.new
-        @game.game_image = r['largeImageUrl']
-        @game.game_genre = GameGenre.first
-        @game.game_name  = r['title']
-        @game.game_caption = r['itemCaption']
-        @game.price = r['itemPrice']
-        @game.system = r['hardware']
-        @game.release = r['salesDate']
-        @game.development = r['label']
-        @game.user = current_user
-        if @game.save!
-          redirect_to games_path, notice: "投稿しました。"
-        else
-          render :new
-        end
-      end
-      return
-    end
     @game = Game.new(game_params)
     @game.user_id = current_user.id
-    if @game.save
+    if @game.save!
       redirect_to games_path, notice: "投稿しました。"
     else
       render :new
@@ -78,6 +67,6 @@ class Public::GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:game_genre_id, :game_name, :game_caption, :price, :system, :release, :development)
+    params.require(:game).permit(:game_genre_id, :game_name, :game_caption, :price, :system, :release, :development, :game_image)
   end
 end

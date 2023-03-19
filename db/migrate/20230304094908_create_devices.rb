@@ -6,7 +6,6 @@ class CreateDevices < ActiveRecord::Migration[6.1]
       t.text :device_caption,       null: false
       t.integer :price,             null: false, default: ""
       t.string :brand,              null: false, default: ""
-      t.string :amazon,             null: false, default: ""
       t.integer :user_id,           null: false
       t.string :device_image
 

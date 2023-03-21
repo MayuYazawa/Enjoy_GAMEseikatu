@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row" style="margin-top:25px;">
    <div class="col-sm-8 px-sm-0 offset-sm-1">
       <h1>ゲーム新規投稿</h1>
@@ -19,38 +18,68 @@
             </div>
           </div>
         <% end %>
-        <form>
-          <div class= "form-group">
-            <label><%= f.label :game_name, "ゲームタイトル" %></label>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
+            <%= f.label :game_name, "ゲームタイトル" %><
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.text_field :game_name, :placeholder => "ゲームタイトル", size: 47 %>
           </div>
-          <div class= "game_genre">
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
             <label><%= f.label :game_genre_id, "ゲームジャンル" %></label>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.collection_select :game_genre_id, GameGenre.all, :id, :game_genre_name, {include_blank: "--選択してください--"} %>
           </div>
-          <div class= "game_caption">
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
             <label><%= f.label :game_caption, "ゲーム説明" %></label>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.text_area :game_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %>
           </div>
-          <div class= "game_system">
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
             <%= f.label :system, "システム要件" %>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.text_area :system, :placeholder => "ここにシステム要件を記述します", size: "50x3" %>
           </div>
-          <div class= "game_system">
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
             <%= f.label :development, "開発元" %>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.text_area :development, :placeholder => "ここに開発元を記述します", size: "50x3" %>
           </div>
-          <div class= "game_release">
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
             <%= f.label :release, "リリース日" %>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.date_select :release, selected: Date.today %>
           </div>
-          <div class= "game_price">
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
             <%= f.label :price, "税込価格" %>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.number_field :price, :placeholder => "1000" %>円
           </div>
-        </form>
+        </div>
       </div>
-      <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
+      <div class="row">
+          <div class="col-md-3 col-12 text-right">
+            <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
+          </div>
+      </div>
     <% end %>
     </div>
   </div>

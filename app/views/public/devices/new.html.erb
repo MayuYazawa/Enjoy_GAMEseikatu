@@ -1,12 +1,11 @@
 <div class="container">
-
   <div class="row" style="margin-top:25px;">
    <div class="col-sm-8 px-sm-0 offset-sm-1">
       <h1>デバイス新規登録</h1>
     </div>
   </div>
   <div class="row">
-    <div class="col-12 new_game-table tablebordered">
+    <div class="col-sm-10 px-sm-0 mx-auto mb-5">
     <%= form_with model:  @device, url: devices_path do |f| %>
       <div class="table table-borderless">
         <% if @rakuten.present? %>
@@ -19,28 +18,52 @@
             </div>
           </div>
         <% end %>
-        <div class= "device_name">
-          <%= f.label :device_name, "デバイス・周辺機器の名前" %>
-          <%= f.text_field :device_name, :placeholder => "デバイス・周辺機器の名前", size: 47 %>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
+            <%= f.label :device_name, "デバイス・周辺機器の名前" %>
+          </div>
+          <div class="col-md-4 col-12">
+            <%= f.text_field :device_name, :placeholder => "デバイス・周辺機器の名前", size: 47 %>
+          </div>
         </div>
-        <div class= "device_genre">
-          <%= f.label :device_genre_id, "デバイス・周辺機器ジャンル" %>
-          <%= f.collection_select :device_genre_id, DeviceGenre.all, :id, :device_genre_name, {include_blank: "--選択してください--"} %>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
+            <%= f.label :device_genre_id, "デバイス・周辺機器ジャンル" %>
+          </div>
+          <div class="col-md-4 col-12">
+            <%= f.collection_select :device_genre_id, DeviceGenre.all, :id, :device_genre_name, {include_blank: "--選択してください--"} %>
+          </div>
         </div>
-        <div class= "device_caption">
-          <%= f.label :device_caption, "デバイス・周辺機器説明" %>
-          <%= f.text_area :device_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
+            <%= f.label :device_caption, "デバイス・周辺機器説明" %>
+          </div>
+          <div class="col-md-4 col-12">
+            <%= f.text_area :device_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %>
+          </div>
         </div>
-        <div class= "device_brand">
-          <%= f.label :brand, "ブランド名" %>
-          <%= f.text_field :brand, :placeholder => "ここにブランド名を記述します", size: "50x3" %>
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
+            <%= f.label :brand, "ブランド名" %>
+          </div>
+          <div class="col-md-4 col-12">
+            <%= f.text_field :brand, :placeholder => "ここにブランド名を記述します", size: "50x3" %>
+          </div>
         </div>
-        <div class= "device_price">
-          <%= f.label :price, "税込価格" %>
-          <%= f.number_field :price, :placeholder => "1000" %>円
+        <div class="row">
+          <div class="col-md-3 col-12 text-right">
+            <%= f.label :price, "税込価格" %>
+          </div>
+          <div class="col-md-4 col-12">
+            <%= f.number_field :price, :placeholder => "1000" %>円
+          </div>
         </div>
       </div>
-      <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
+      <div class="row">
+          <div class="col-md-3 col-12 text-right">
+            <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
+          </div>
+      </div>
     <% end %>
     </div>
   </div>

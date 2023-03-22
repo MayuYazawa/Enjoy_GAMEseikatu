@@ -56,6 +56,7 @@ class Public::GamesController < ApplicationController
   end
 
   def create
+
     @game = Game.new(game_params)
     @game.user_id = current_user.id
     if @game.save!
@@ -71,6 +72,13 @@ class Public::GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:game_genre_id, :game_name, :game_caption, :price, :system, :release, :development, :game_image)
+    params.require(:game).permit(:game_genre_id, :game_name, :game_caption, :price, :system, :development, :game_image)
+    .merge(
+      {release:
+      "#{params[:game]["release(1i)"]}-#{params[:game]["release(2i)"]}-#{params[:game]["release(3i)"]}"
+      }
+      
+    )
   end
+  
 end

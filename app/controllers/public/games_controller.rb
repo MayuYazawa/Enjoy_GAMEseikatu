@@ -28,7 +28,11 @@ class Public::GamesController < ApplicationController
         @game.game_caption = r['itemCaption']
         @game.price = r['itemPrice']
         @game.system = r['hardware']
-        @game.release = r['salesDate']
+        str1 =  r['salesDate'].gsub("年", "#")
+        str2 = str1.gsub("月", "#")
+        str3 = str2.gsub("日", "#")
+        arr = str3.split("#")
+        @game.release =  Date.new(arr[0].to_i, arr[1].to_i, arr[2].to_i)
         @game.development = r['label']
       end
     else

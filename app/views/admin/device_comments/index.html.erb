@@ -23,9 +23,9 @@
             <td>
               <%= device_comment.created_at.strftime('%Y年/%m月/%d日 %H:%M:%S') %>
             </td>
-            <td><%= game_comment.username %></td>
-            <td><%= game_comment.title %></td>
-            <td><%= game_comment.body.truncate(10, omission: '…') %></td>
+            <td><%= device_comment.username %></td>
+            <td><%= device_comment.title %></td>
+            <td><%= device_comment.body.truncate(10, omission: '…') %></td>
             <td>
               <div id="rate_<%= device_comment.id %>"></div>
               <script>

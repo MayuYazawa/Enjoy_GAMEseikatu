@@ -13,6 +13,8 @@
 <% end %>
 
 <script>
+  var ele = document.querySelector('#post_raty');
+  if (ele) ele.innerHTML = "";
   raty(document.querySelector('#post_raty'),{
   starOn: "<%= asset_path('star-on.png') %>",
   starOff: "<%= asset_path('star-off.png') %>",

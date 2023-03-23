@@ -1,2 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255, 255, 255, 1.0);
+}

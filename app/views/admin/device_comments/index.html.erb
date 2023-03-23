@@ -23,7 +23,7 @@
             <td>
               <%= device_comment.created_at.strftime('%Y年/%m月/%d日 %H:%M:%S') %>
             </td>
-            <td><%= device_comment.username %></td>
+            <td><%= device_comment.user.username %></td>
             <td><%= device_comment.title %></td>
             <td><%= device_comment.body.truncate(10, omission: '…') %></td>
             <td>
@@ -42,7 +42,7 @@
             </td>
             <td>
               <%= link_to "表示する", admin_device_comment_path(device_comment.id), class: "btn btn-success" %>
-              <%= link_to "削除する", admin_device_comment_path(device_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_comment_#{device_coment.id}" %>
+              <%= link_to "削除する", admin_device_comment_path(device_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_comment_#{device_comment.id}" %>
               </td>
           </tr>
         <% end %>

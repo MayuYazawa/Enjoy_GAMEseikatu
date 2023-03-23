@@ -1,4 +1,4 @@
-<% if device.liked_by?(current_user) %>
+<% if current_user.present? && device.liked_by?(current_user) %>
   <%= link_to  device_not_goods_path(device), method: :delete do %>
     <i class="fas fa-heart"></i>
     <%= device.device_goods.count %>

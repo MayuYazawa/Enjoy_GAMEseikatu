@@ -1,6 +1,6 @@
 class DeviceComment < ApplicationRecord
 
-  has_many :device_comment_goods
+  has_many :device_comment_goods, dependent: :destroy
   belongs_to :user
   belongs_to :device
 

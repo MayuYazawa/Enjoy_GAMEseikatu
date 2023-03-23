@@ -8,7 +8,7 @@
         <td>
           <div id="rate_<%= game_comment.id %>"></div>
           <script>
-            var ele = document.getElementById('rate_<%= game_comment.id %>')
+            var ele = document.getElementById('rate_<%= game_comment.id %>');
             var opt = {
             starOn: "<%= asset_path('star-on.png') %>",
             starOff: "<%= asset_path('star-off.png') %>",
@@ -17,8 +17,8 @@
             score: <%= game_comment.rate ||= 0 %>,
             readOnly: true
             };
-            if (ele) ele.innerHTML = ""
-            raty(ele, opt)
+            if (ele) ele.innerHTML = "";
+            raty(ele, opt);
           </script>
         </td>
         <td>

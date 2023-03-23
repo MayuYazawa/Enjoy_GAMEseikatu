@@ -19,7 +19,11 @@
           <tr>
             <td><%= user.id %></td>
             <td><%= link_to user.username, admin_user_path(user), class: "text-dark font-weight-bold" %></td>
-            <td><%= user.gender %></td>
+              <% if user.gender == "man" %>
+                <td class="text-success font-weight-bold">男性</td>
+              <% else %>
+                <td class="text-muted font-weight-bold">女性</td>
+              <% end %>
             <td><%= user.email %></td>
             <% if user.is_deleted == false %>
               <td class="text-success font-weight-bold">有効</td>

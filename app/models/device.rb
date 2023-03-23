@@ -1,8 +1,8 @@
 class Device < ApplicationRecord
 
 
-  has_many :device_comments
-  has_many :device_goods
+  has_many :device_comments, dependent: :destroy
+  has_many :device_goods, dependent: :destroy
   belongs_to :device_genre
   belongs_to :user
 

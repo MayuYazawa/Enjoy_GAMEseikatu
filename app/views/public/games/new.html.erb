@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row" style="margin-top:25px;">
-   <div class="col-sm-8 px-sm-0 offset-sm-1">
+   <div class="col-md-8 px-sm-0 offset-sm-1">
       <h1>ゲーム新規投稿</h1>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-10 px-sm-0 mx-auto mb-5">
+    <div class="col-md-10 px-sm-0 mx-auto mb-5">
     <%= form_with model: @game, url: games_path do |f| %>
       <div class="table table-borderless">
         <% if @rakuten.present? %>
@@ -76,9 +76,9 @@
         </div>
       </div>
       <div class="row">
-          <div class="col-md-3 col-12 text-right">
-            <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
-          </div>
+        <div class="col-md-3 col-12 text-right">
+          <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
+        </div>
       </div>
     <% end %>
     </div>

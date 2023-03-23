@@ -1,42 +1,62 @@
 <div class="container" style="margin-top:25px;">
-  <div class="public-registrations">
-    <div class="public-registrations-title">
-      <h4><b>新規会員登録</b></h4>
+  <div class="row" style="margin-top:25px;">
+    <div class="col-md-8 px-sm-0 offset-sm-1">
+      <h1><b>新規会員登録</b></h1>
     </div>
-
-    <div class="public-registrations-table">
+  </div>
+  <div class="row">
+    <div class="col-md-10 px-sm-0 mx-auto mb-5">
       <%= form_with model: @user, url: user_registration_path do |f| %>
-        <div class= "user_profile">
-          <div class="public-registrations-field">
+        <div class= "row">
+          <div class="col-md-3 col-12 text-right">
             <%= f.label :username, "ユーザーネーム" %>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.text_field :username, size: 25, class: "textlines-radius" %>
           </div>
-          <div class="public-registrations-field">
+        </div>
+        <div class= "row">
+          <div class="col-md-3 col-12 text-right">
             <%= f.label :"メールアドレス" %>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.email_field :email, autofocus: true, size: 25, autocomplete: "email", class: "textlines-radius" %>
           </div>
-          <div class="gender">
+        </div>
+        <div class= "row">
+          <div class="col-md-3 col-12 text-right">
             <%= f.label :"性別" %>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.radio_button :gender, "man", checked: true %><%= f.label :gender, "男性" %>
             <%= f.radio_button :gender, "woman" %><%= f.label :gender, "女性" %>
           </div>
-          <div class="public-registrations-field">
+        </div>
+        <div class= "row">
+          <div class="col-md-3 col-12 text-right">
             <%= f.label :"パスワード" %>
               <% if @minimum_password_length %>
                 (<%= @minimum_password_length %>文字以上)
               <% end %>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.password_field :password, autocomplete: "new-password", size: 25, class: "textlines-radius" %>
           </div>
-          <div class="field">
+        </div>
+        <div class= "row">
+          <div class="col-md-3 col-12 text-right">
             <%= f.label :"パスワード(確認用）" %>
+          </div>
+          <div class="col-md-4 col-12">
             <%= f.password_field :password_confirmation, autocomplete: "new-password", size: 25, class: "textlines-radius" %>
           </div>
-          <div class="public-registrations-actions">
+        </div>
+        <div class= "row">
+          <div class="col-md-3 col-12 text-right">
             <%= f.submit "新規登録", class: "btn btn-success" %>
           </div>
         </div>
       <% end %>
     </div>
-    <br>
   </div>
 </div>

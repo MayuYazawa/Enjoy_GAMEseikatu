@@ -1,39 +1,36 @@
-<div class= "device_comments_index">
-  <div class= "device_comment_index">
-    <% device.device_comments.each do |device_comment| %>
-      <div>
-        <%= link_to user_path(device_comment.user) do %>
-          <%#= image_tag book_comment.user.get_profile_image, size: "100x100" %><br>
-          <%= device_comment.user.username %>
-        <% end %>
-      </div>
-      <div><%= device_comment.title %></div>
-      <div><%= device_comment.body %></div>
-      <div>
-        <div id="rate_<%= device_comment.id %>"></div>
-      </div>
-      <div>
-        <div id= "device_comment_<%= device_comment.id %>">
-          <%= render "public/shared/device_comment_goods", device_comment: device_comment %>
-        </div>
-      </div>
-      <div>
-        <% if device_comment.user == current_user %>
-          <%= link_to "編集する", edit_device_comment_path(device_comment), class: "btn btn-sm btn-success edit_device_comment#{device.id}" %>
-          <%= link_to "削除する", device_path(device_comment), method: :delete, data: {confirm: '本当に消しますか？' }, class: "btn btn-danger destroy_device_comment_#{device.id}", remote: true %>
-        <% end %>
-      </div>
-      <script>
-        raty(document.querySelector('#rate_<%= device_comment.id %>'),
-        {
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
-        scoreName: 'device_comment[rate]',
-        score: <%= device_comment.rate ||= 0 %>,
-        readOnly: true
-        });
-      </script>
-    <% end %>
-  </div>
-</div>
+<table class= "table table-bordered">
+  <tbody>
+      <% device.device_comments.each do |device_comment| %>
+      <tr>
+        <td><%= device_comment.user.username %></td>
+        <td><%= device_comment.title %></td>
+        <td><%= device_comment.body %></td>
+        <td>
+          <div id="rate_<%= device_comment.id %>"></div>
+          <script>
+            raty(document.querySelector('#rate_<%= device_comment.id %>'),
+            {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            scoreName: 'device_comment[rate]',
+            score: <%= device_comment.rate ||= 0 %>,
+            readOnly: true
+            });
+          </script>
+        </td>
+        <td>
+          <div id= "device_comment_<%= device_comment.id %>">
+            <%= render "public/shared/device_comment_goods", device_comment: device_comment %>
+          </div>
+        </td>
+        <td>
+          <% if device_comment.user == current_user %>
+            <%= link_to "編集する", edit_device_comment_path(device_comment), class: "btn btn-sm btn-success edit_device_comment#{device.id}" %>
+            <%= link_to "削除する", device_path(device_comment), method: :delete, data: {confirm: '本当に消しますか？' }, class: "btn btn-danger destroy_device_comment_#{device.id}", remote: true %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

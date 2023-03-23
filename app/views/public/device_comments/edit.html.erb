@@ -1,38 +1,36 @@
 <div class="container">
   <div class="row"  style="margin-top:25px;">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
-      <h4>デバイス・周辺機器投稿コメント編集</h4>
+      <h4>デバイス投稿コメント編集</h4>
     </div>
   </div>
   <div class="row ml-5" style="margin-bottom:25px;">
     <div class="col-sm-10 px-sm-0 mx-auto">
       <%= form_with model: @device_comment, url: device_comment_path(@device_comment.id) do |f| %>
-        <div class="table table-borderless text-secondary">
-          <!--<tr>
-            <th><%#= f.label :game_image, "ゲーム画像" %></th>
-            <td><%#= f.file_field :game_image, accept: "image/*" %></td>
-          </tr>-->
-          <div class= "device_comment_title">
-            <%= f.label :title, "コメントタイトル" %>
-            <%= f.text_field :title, :placeholder => "コメントタイトル", size: 47 %>
-          </div>
-          <div class= "device_comment_body">
-            <%= f.label :body, "コメント内容" %>
-            <%= f.text_area :body, :placeholder => "ここに内容を記述します", size: "50x3" %>
-          </div>
-          <div class= "device_rate">
-            <%= f.label :rate, "評価" %>
+        <table class="table table-borderless text-secondary">
+          <tr>
+            <th><%= f.label :title, "コメントタイトル" %></th>
+            <td><%= f.text_field :title, :placeholder => "コメントタイトル", size: 47 %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :body, "コメント内容" %></th>
+            <td><%= f.text_area :body, :placeholder => "ここに内容を記述します", size: "50x3" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :rate, "評価" %></th>
+            <td>
               <div id="post_raty"></div>
-          </div>
-        </div>
+            </td>
+          </tr>
+        </table>
         <%= f.submit "変更を保存", class: 'btn btn-success btn-lg' %>
         <script>
-        raty(document.querySelector('#post_raty'),{
+          raty(document.querySelector('#post_raty'),{
           starOn: "<%= asset_path('star-on.png') %>",
           starOff: "<%= asset_path('star-off.png') %>",
           starHalf: "<%= asset_path('star-half.png') %>",
           scoreName: 'device_comment[rate]'
-         });
+          });
         </script>
       <% end %>
     </div>

@@ -11,18 +11,21 @@
       <div class= "game" style="margin-bottom:20px;">
         <h3><b><%= @game.game_name %></b></h3>
         <div id="rate_<%= @game.id %>"></div>
-            <script>
-              $('#rate_<%= @game.id %>').empty();
-              raty(document.querySelector('#rate_<%= @game.id %>'),
-              {
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              starHalf: "<%= asset_path('star-half.png') %>",
-              scoreName: 'game_comment[rate]',
-              score: <%= @game.game_comments.average(:rate) %>,
-              readOnly: true
-              });
-            </script>
+          <script>
+            $('#rate_<%= @game.id %>').empty();
+            raty(document.querySelector('#rate_<%= @game.id %>'),
+            {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            starHalf: "<%= asset_path('star-half.png') %>",
+            scoreName: 'game_comment[rate]',
+            score: <%= @game.game_comments.average(:rate) %>,
+            readOnly: true
+            });
+          </script>
+        <div id= "game_<%= @game.id %>">
+          <%= render "public/shared/game_goods", game: @game %>
+        </div>
         <br>
         <h5>ジャンル：<%= @game.game_genre.game_genre_name %></h5>
         <br>
@@ -30,7 +33,6 @@
         <br>
         <h5>メーカー：<%= @game.system %></h5>
         <br>
-    
         <h5>リリース日：<%= @game.release %></h5>
         <br>
         <h5>開発元：<%= @game.development %></h5>
@@ -39,9 +41,6 @@
         ¥ <%= (@game.price).floor.to_s(:delimited) %>
         <span class= "tax">(税込)</span>
       </h3>
-      <div id= "game_<%= @game.id %>">
-        <%= render "public/shared/game_goods", game: @game %>
-      </div>
       <div>
         <% if admin_signed_in? %>
           <%= link_to "編集する", edit_game_path(@game), class: "btn btn-sm btn-success edit_game_#{@game.id}" %>

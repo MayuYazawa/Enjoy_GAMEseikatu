@@ -1,20 +1,35 @@
-<div class="row mt-4">
-    <h3 class="col-2">投稿いいね一覧</h3>
-    <div class="col-2">
-      <h5>ゲーム投稿いいね</h5>
-      <div>
-        <% @user.game_goods.each do |game_good| %>
-          <%= link_to game_good.game.game_name, game_path(game_good.game),  class: "btn btn-sm btn-primary px-4" %>
-        <% end %>
+<div class= "container">
+  <div class="row mt-5">
+    <div class="order-text col-md-12 px-sm-0" style="margin-bottom:15px;">
+      <h4><b>投稿いいね一覧</b></h4>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="row mb-3">
+      <div class="col-md-12 px-sm-0">
+        <table class="table table-bordered">
+          <th>ゲーム投稿いいね</th>
+          <td>
+            <% @user.game_goods.each do |game_good| %>
+              <%= link_to game_good.game.game_name, game_path(game_good.game),  class: "btn btn-sm btn-primary px-4" %>
+            <% end %>
+          </td>
+        </table>
       </div>
     </div>
-      <br>
-    <div class="col-2">
-      <h5>デバイス投稿いいね</h5>
-      <div>
-        <% @user.device_goods.each do |device_good| %>
-          <%= link_to device_good.device.device_name, device_path(device_good.device),  class: "btn btn-sm btn-primary px-4" %>
-        <% end %>
+  </div>
+  <div class="col-md-12">
+    <div class="row mb-3">
+      <div class="col-md-12 px-sm-0">
+        <table class="table table-bordered">
+          <th>デバイス投稿いいね</th>
+          <td>
+            <% @user.device_goods.each do |device_good| %>
+              <%= link_to device_good.device.device_name, device_path(device_good.device),  class: "btn btn-sm btn-primary px-4" %>
+            <% end %>
+          </td>
+        </table>
       </div>
     </div>
+  </div>
 </div>

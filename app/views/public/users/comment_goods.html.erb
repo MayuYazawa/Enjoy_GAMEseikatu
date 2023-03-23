@@ -1,22 +1,53 @@
-<div class="row mt-3">
-    <h5 class="col-2">コメントいいね一覧</h5>
-    <div class="col-2">
-      <h5>ゲームコメントいいね</h5>
-      <div>
-        <%@user.game_comments.each do |game_comment| %>
-          <%= link_to  game_comment,game_comment_path(game_comment),  class: "btn btn-sm btn-primary px-4" %>
-        <% end %>
+<div class= "container">
+  <div class= "row-mt-5">
+    <div class="order-text col-md-12 px-sm-0" style="margin-bottom:15px;">
+      <h4><b>コメントいいね一覧</b></h4>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="row mb-3">
+      <div class="col-md-12 px-sm-0">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <th class="col-md-3">ゲームコメントいいね</th>
+            <th class="col-md-3">タイトル</th>
+            <th class="col-md-2">コメント内容</th>
+          </thead>
+          <tbody>
+            <%@user.game_comments.each do |game_comment| %>
+              <tr>
+                <td></td>
+                <td><%= game_comment.title %></td>
+                <td><%= game_comment.body %></td>
+                <td><%= link_to  game_comment,game_comment_path(game_comment),  class: "btn btn-sm btn-primary px-4" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
-      <br>
-    <div class="col-2">
-      <h5>デバイスコメントいいね</h5>
-      <div>
-        <% @user.device_comments.each do |device_comment| %>
-          <p><%= device_comment.title %></p>
-          <p><%= device_comment.body %></p>
-          <%= link_to  device_comment,device_comment_path(device_comment),  class: "btn btn-sm btn-primary px-4" %>
-        <% end %>
+  </div>
+  <div class="col-md-12">
+    <div class="row mb-3">
+      <div class="col-md-12 px-sm-0">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <th class="col-md-3">デバイスコメントいいね</th>
+            <th class="col-md-3">タイトル</th>
+            <th class="col-md-2">コメント内容</th>
+          </thead>
+          <tbody>
+            <% @user.device_comments.each do |device_comment| %>
+              <tr>
+                <td></td>
+                <td><%= device_comment.title %></td>
+                <td><%= device_comment.body %></td>
+                <td><%= link_to  device_comment,device_comment_path(device_comment),  class: "btn btn-sm btn-primary px-4" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
+  </div>
 </div>

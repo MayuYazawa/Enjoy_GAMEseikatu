@@ -23,6 +23,9 @@
             readOnly: true
             });
           </script>
+        <div id= "device_<%= @device.id %>">
+          <%= render "public/shared/device_goods", device: @device %>
+        </div>
         <br>
         <h5>ジャンル：<%= @device.device_genre.device_genre_name %></h5>
         <br>
@@ -34,9 +37,6 @@
         ¥ <%= (@device.price).floor.to_s(:delimited) %>
         <span class= "tax">(税込)</span>
       </h3>
-      <div id= "device_<%= @device.id %>">
-        <%= render "public/shared/device_goods", device: @device %>
-      </div>
       <div>
         <% if admin_signed_in? %>
           <%= link_to "編集する", edit_device_path(@device), class: "btn btn-sm btn-success edit_device_#{@device.id}" %>

@@ -20,15 +20,15 @@
         <% end %>
         <div class="row">
           <div class="col-md-3 col-12 text-right">
-            <%= f.label :device_name, "デバイス・周辺機器の名前" %>
+            <%= f.label :device_name, "デバイスの名前" %>
           </div>
           <div class="col-md-4 col-12">
-            <%= f.text_field :device_name, :placeholder => "デバイス・周辺機器の名前", size: 47 %>
+            <%= f.text_field :device_name, :placeholder => "デバイスの名前", size: 47 %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-3 col-12 text-right">
-            <%= f.label :device_genre_id, "デバイス・周辺機器ジャンル" %>
+            <%= f.label :device_genre_id, "デバイスジャンル" %>
           </div>
           <div class="col-md-4 col-12">
             <%= f.collection_select :device_genre_id, DeviceGenre.all, :id, :device_genre_name, {include_blank: "--選択してください--"} %>
@@ -36,7 +36,7 @@
         </div>
         <div class="row">
           <div class="col-md-3 col-12 text-right">
-            <%= f.label :device_caption, "デバイス・周辺機器説明" %>
+            <%= f.label :device_caption, "デバイス説明" %>
           </div>
           <div class="col-md-4 col-12">
             <%= f.text_area :device_caption, :placeholder => "ここに説明文を記述します", size: "50x3" %>

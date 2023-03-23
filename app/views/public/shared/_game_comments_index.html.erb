@@ -4,19 +4,21 @@
       <tr>
         <td><%= game_comment.user.username %></td>
         <td><%= game_comment.title %></td>
-        <td><%= game_comment.body %></td>
+        <td><%= game_comment.body.truncate(10, omission: '…') %></td>
         <td>
           <div id="rate_<%= game_comment.id %>"></div>
           <script>
-            raty(document.querySelector('#rate_<%= game_comment.id %>'),
-            {
+            var ele = document.getElementById('rate_<%= game_comment.id %>')
+            var opt = {
             starOn: "<%= asset_path('star-on.png') %>",
             starOff: "<%= asset_path('star-off.png') %>",
             starHalf: "<%= asset_path('star-half.png') %>",
             scoreName: 'game_comment[rate]',
             score: <%= game_comment.rate ||= 0 %>,
             readOnly: true
-            });
+            };
+            if (ele) ele.innerHTML = ""
+            raty(ele, opt)
           </script>
         </td>
         <td>

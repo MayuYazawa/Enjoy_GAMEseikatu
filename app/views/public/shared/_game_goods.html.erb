@@ -1,4 +1,4 @@
-<% if game.liked_by?(current_user) %>
+<% if current_user.present? && game.liked_by?(current_user) %>
   <%= link_to  game_not_goods_path(game), method: :delete do %>
     <i class="fas fa-heart"></i>
     <%= game.game_goods.count %>

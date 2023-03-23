@@ -10,9 +10,13 @@
         <table class="table table-bordered">
           <th>ゲーム投稿いいね</th>
           <td>
+            <div class="row">
             <% @user.game_goods.each do |game_good| %>
+              <div class="col-auto m-1">
               <%= link_to game_good.game.game_name, game_path(game_good.game),  class: "btn btn-sm btn-primary px-4" %>
+              </div>
             <% end %>
+            </div>
           </td>
         </table>
       </div>
@@ -24,9 +28,13 @@
         <table class="table table-bordered">
           <th>デバイス投稿いいね</th>
           <td>
+            <div class="row">
             <% @user.device_goods.each do |device_good| %>
-              <%= link_to device_good.device.device_name, device_path(device_good.device),  class: "btn btn-sm btn-primary px-4" %>
+              <div class="col-auto m-1">
+                <%= link_to device_good.device.device_name, device_path(device_good.device),  class: "btn btn-sm btn-primary px-4" %>
+              </div>
             <% end %>
+            </div>
           </td>
         </table>
       </div>

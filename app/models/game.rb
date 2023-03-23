@@ -1,8 +1,8 @@
 class Game < ApplicationRecord
 
 
-  has_many :game_comments
-  has_many :game_goods
+  has_many :game_comments, dependent: :destroy
+  has_many :game_goods, dependent: :destroy
   belongs_to :game_genre
   belongs_to :user
 

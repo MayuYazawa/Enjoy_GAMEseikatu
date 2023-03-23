@@ -77,8 +77,8 @@ class Public::GamesController < ApplicationController
       {release:
       "#{params[:game]["release(1i)"]}-#{params[:game]["release(2i)"]}-#{params[:game]["release(3i)"]}"
       }
-      
+
     )
   end
-  
+
 end

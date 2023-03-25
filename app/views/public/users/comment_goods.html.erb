@@ -14,12 +14,12 @@
             <th class="col-md-2">コメント内容</th>
           </thead>
           <tbody>
-            <%@user.game_comments.each do |game_comment| %>
+            <%@user.game_comment_goods.each do |game_comment_good| %>
               <tr>
                 <td></td>
-                <td><%= game_comment.title %></td>
-                <td><%= game_comment.body %></td>
-                <td><%= link_to "表示する", game_comment_path(game_comment),  class: "btn btn-sm btn-primary px-4" %></td>
+                <td><%= game_comment_good.game_comment.title %></td>
+                <td><%= game_comment_good.game_comment.body %></td>
+                <td><%= link_to "表示する", game_comment_path(game_comment_good.game_comment),  class: "btn btn-sm btn-primary px-4" %></td>
               </tr>
             <% end %>
           </tbody>
@@ -37,12 +37,12 @@
             <th class="col-md-2">コメント内容</th>
           </thead>
           <tbody>
-            <% @user.device_comments.each do |device_comment| %>
+            <% @user.device_comment_goods.each do |device_comment_good| %>
               <tr>
                 <td></td>
-                <td><%= device_comment.title %></td>
-                <td><%= device_comment.body %></td>
-                <td><%= link_to "表示する", device_comment_path(device_comment),  class: "btn btn-sm btn-primary px-4" %></td>
+                <td><%= device_comment_good.device_comment.title %></td>
+                <td><%= device_comment_good.device_comment.body %></td>
+                <td><%= link_to "表示する", device_comment_path(device_comment_good.device_comment),  class: "btn btn-sm btn-primary px-4" %></td>
               </tr>
             <% end %>
           </tbody>

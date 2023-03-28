@@ -17,7 +17,7 @@
               <td><%= device_comment.title %></td>
               <td><%= simple_format(device_comment.body) %></td>
               <td><%= device_comment.rate %></td>
-              <td><%= link_to "削除する", device_comment_path(device_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_comment_#{device_comment.id}" %></td>
+              <td><%= link_to "削除する", admin_device_comment_path(device_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_comment_#{device_comment.id}" %></td>
               </tr>
             <% end %>
           <% end %>

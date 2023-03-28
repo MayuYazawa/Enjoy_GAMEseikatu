@@ -17,7 +17,7 @@
               <td><%= game_comment.title %></td>
               <td><%= simple_format(game_comment.body) %></td>
               <td><%= game_comment.rate %></td>
-              <td><%= link_to "削除する", game_comment_path(game_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_game_comment_#{game_comment.id}" %></td>
+              <td><%= link_to "削除する", admin_game_comment_path(game_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_game_comment_#{game_comment.id}" %></td>
               </tr>
             <% end %>
           <% end %>

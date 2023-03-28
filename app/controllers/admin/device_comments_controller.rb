@@ -23,9 +23,10 @@ before_action :authenticate_admin!
 
   def destroy
     device_comment = DeviceComment.find(params[:id])
+    user_id = device_comment.user_id
     device_comment.destroy
     @device_comments = DeviceComment.all
-    redirect_to admin_device_comments_path
+    redirect_to admin_device_comment_path(user_id)
   end
 
   private

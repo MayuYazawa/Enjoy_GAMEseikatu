@@ -23,9 +23,10 @@ before_action :authenticate_admin!
 
   def destroy
     game_comment = GameComment.find(params[:id])
+    user_id = game_comment.user_id
     game_comment.destroy
     @game_comments = GameComment.all
-    redirect_to admin_game_comments_path
+    redirect_to admin_game_comment_path(user_id)
   end
 
   private

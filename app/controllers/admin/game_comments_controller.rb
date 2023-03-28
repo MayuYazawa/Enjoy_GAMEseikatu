@@ -10,7 +10,7 @@ before_action :authenticate_admin!
   end
 
   def show
-    @game_comment = GameComment.find(params[:id])
+    @game_comments = GameComment.where(user_id: params[:id])
   end
 
   def update

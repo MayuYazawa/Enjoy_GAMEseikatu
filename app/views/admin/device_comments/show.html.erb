@@ -1,19 +1,28 @@
 <div class= "container">
   <div class= "row">
     <div class= "col-9 md-9 my-5 offset-1">
-      <div class= "device_image" style="margin-bottom:40px;">
-        <%= image_tag @device_comment.device.device_image %>
-      </div>
-      <div class= "device_comment" style="margin-bottom:20px;">
-        <h3><b><%= @device_comment.title %></b></h3>
-        <br>
-          <h5><%= simple_format(@device_comment.body) %></h5>
-        <br>
-        <h5><%= @device_comment.rate %></h5>
-      </div>
-      <div>
-          <%= link_to "削除する", device_comment_path(@device_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_comment_#{@device_comment.id}" %>
-      </div>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <th class="col-md-3">投稿</th>
+          <th class="col-md-3">タイトル</th>
+          <th class="col-md-2">コメント内容</th>
+        </thead>
+        <tbody>
+          <% @device_comments.each do |device_comment| %>
+            <% if device_comment.device.present? %>
+              <tr>
+              <td>
+                <%= image_tag device_comment.device.device_image %>
+              </td>
+              <td><%= device_comment.title %></td>
+              <td><%= simple_format(device_comment.body) %></td>
+              <td><%= device_comment.rate %></td>
+              <td><%= link_to "削除する", device_comment_path(device_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_device_comment_#{device_comment.id}" %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

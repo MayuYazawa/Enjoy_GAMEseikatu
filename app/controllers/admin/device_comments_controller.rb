@@ -9,7 +9,8 @@ before_action :authenticate_admin!
   end
 
   def show
-    @device_comment = DeviceComment.find(params[:id])
+    @device_comments =  DeviceComment.where(user_id: params[:id])
+    #@device_comment = DeviceComment.find(params[:id])
   end
 
   def update

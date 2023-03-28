@@ -33,6 +33,7 @@ class Admin::UsersController < ApplicationController
 
   def return_member
   end
+  
 
   private
 
